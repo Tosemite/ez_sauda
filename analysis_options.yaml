@@ -1,0 +1,19 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    require_trailing_commas: true
+    always_put_required_named_parameters_first: true
+    avoid_relative_lib_imports: true
+    unawaited_futures: true
+    unrelated_type_equality_checks: true
+
+analyzer:
+  exclude:
+    - "lib/**.gen.dart"
+    - "lib/**.g.dart"
+    - "lib/**.gm.dart"
+    - "lib/**.freezed.dart"
+    - "lib/**.config.dart"
+    - "lib/l10n/generated/**"
