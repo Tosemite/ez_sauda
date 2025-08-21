@@ -1,6 +1,4 @@
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
-import 'package:ez_sauda/core/presentation/extensions/number_extension.dart';
-import 'package:ez_sauda/features/product/domain/models/fetch_reviews_response.dart';
 import 'package:flutter/material.dart';
 
 class ProductReviewNumberBar extends StatelessWidget {

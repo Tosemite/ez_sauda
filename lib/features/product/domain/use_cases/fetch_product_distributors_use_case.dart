@@ -1,9 +1,7 @@
 import 'package:ez_sauda/core/domain/models/result.dart';
 import 'package:ez_sauda/core/domain/usecases/usecase.dart';
-import 'package:ez_sauda/features/product/domain/models/fetch_reviews_response.dart';
-import 'package:ez_sauda/features/product/domain/models/product_distributor.dart';
-import 'package:ez_sauda/features/product/domain/models/review.dart';
 import 'package:ez_sauda/features/product/domain/models/distributor.dart';
+import 'package:ez_sauda/features/product/domain/models/product_distributor.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

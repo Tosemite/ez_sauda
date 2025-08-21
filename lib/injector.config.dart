@@ -69,6 +69,16 @@ import 'package:ez_sauda/features/product/domain/use_cases/fetch_similar_product
     as _i316;
 import 'package:ez_sauda/features/product/presentation/blocs/product_bloc.dart'
     as _i694;
+import 'package:ez_sauda/features/profile/data/services/user_service.dart'
+    as _i640;
+import 'package:ez_sauda/features/profile/data/sources/user_source.dart'
+    as _i57;
+import 'package:ez_sauda/features/profile/domain/services/user_service.dart'
+    as _i796;
+import 'package:ez_sauda/features/profile/domain/use_cases/fetch_current_user_use_case.dart'
+    as _i84;
+import 'package:ez_sauda/features/profile/presentation/blocs/product_bloc.dart'
+    as _i390;
 import 'package:ez_sauda/features/search/presentation/blocs/search_cubit.dart'
     as _i280;
 import 'package:ez_sauda/features/search/presentation/blocs/search_state.dart'
@@ -151,6 +161,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1044.BrandsSource>(() => _i1044.BrandsSource(gh<_i361.Dio>()));
     gh.factory<_i51.ProductsSource>(() => _i51.ProductsSource(gh<_i361.Dio>()));
     gh.factory<_i363.AuthSource>(() => _i363.AuthSource(gh<_i361.Dio>()));
+    gh.factory<_i57.UserSource>(() => _i57.UserSource(gh<_i361.Dio>()));
     gh.singleton<_i912.ProductsService>(() => _i11.ProductsServiceImpl(
           productsSource: gh<_i51.ProductsSource>(),
           localeConfig: gh<_i816.LocaleConfig>(),
@@ -191,6 +202,10 @@ extension GetItInjectableX on _i174.GetIt {
           params,
           gh<_i776.FetchProductsUseCase>(),
         ));
+    gh.singleton<_i796.UserService>(() => _i640.UserServiceImpl(
+          userSource: gh<_i57.UserSource>(),
+          localeConfig: gh<_i816.LocaleConfig>(),
+        ));
     gh.factory<_i23.FetchCategoriesUseCase>(
         () => _i23.FetchCategoriesUseCase(gh<_i1028.CategoriesService>()));
     gh.factory<_i252.FetchBrandsUseCase>(
@@ -209,6 +224,10 @@ extension GetItInjectableX on _i174.GetIt {
           fetchCategoriesUseCase: gh<_i23.FetchCategoriesUseCase>(),
           fetchBrandsUseCase: gh<_i252.FetchBrandsUseCase>(),
         ));
+    gh.factory<_i84.FetchCurrentUserUseCase>(
+        () => _i84.FetchCurrentUserUseCase(gh<_i796.UserService>()));
+    gh.factory<_i390.ProfileBloc>(() => _i390.ProfileBloc(
+        fetchCurrentUserUseCase: gh<_i84.FetchCurrentUserUseCase>()));
     gh.factory<_i532.LoginCubit>(
         () => _i532.LoginCubit(loginUseCase: gh<_i919.LoginUseCase>()));
     gh.factory<_i1054.AppBloc>(() => _i1054.AppBloc(

@@ -92,7 +92,7 @@ class ProductDistributorView extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

@@ -1,10 +1,6 @@
 import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
-import 'package:ez_sauda/core/presentation/extensions/number_extension.dart';
 import 'package:ez_sauda/core/presentation/widgets/product_list_view.dart';
-import 'package:ez_sauda/features/product/domain/models/fetch_reviews_response.dart';
-import 'package:ez_sauda/features/product/presentation/widgets/product_review_number_bar.dart';
-import 'package:ez_sauda/features/product/presentation/widgets/product_review_view.dart';
 import 'package:flutter/material.dart';
 
 class ProductSimilarProductsView extends StatelessWidget {
