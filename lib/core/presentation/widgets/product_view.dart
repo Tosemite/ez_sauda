@@ -9,6 +9,7 @@ import 'package:ez_sauda/features/auth/presentation/dialogs/login_dialog.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_event.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_state.dart';
+import 'package:ez_sauda/features/product/domain/models/distributor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,8 +54,10 @@ class ProductView extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            product.name,
+            '${product.name}\n',
             style: context.typography.bodyRegular,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 5),
           RatingInfoView(
@@ -64,10 +67,9 @@ class ProductView extends StatelessWidget {
           const SizedBox(height: 8),
           BlocBuilder<CartBloc, CartState>(
             buildWhen: (prev, curr) =>
-                prev.productCounter[product.id] !=
-                curr.productCounter[product.id],
+                prev.productMap[product.id] != curr.productMap[product.id],
             builder: (context, state) {
-              final count = state.productCounter[product.id]?.count ?? 0;
+              final count = state.productMap[product.id]?.quantity ?? 0;
               return SizedBox(
                 height: 32,
                 child: count == 0
@@ -79,9 +81,17 @@ class ProductView extends StatelessWidget {
                             }
                           }
                           if (context.mounted) {
-                            context
-                                .read<CartBloc>()
-                                .add(CartProductAdded(product: product));
+                            context.read<CartBloc>().add(
+                                  CartProductAdded(
+                                    product: product,
+                                    distributor: Distributor(
+                                      id: '1',
+                                      rating: 1,
+                                      totalReviews: 1,
+                                      name: 'Поставщик 1',
+                                    ),
+                                  ),
+                                );
                           }
                         },
                         child: Row(
@@ -99,7 +109,8 @@ class ProductView extends StatelessWidget {
                         ),
                       )
                     : ProductCounterButton(
-                        product: product,
+                        productId: product.id,
+                        unitOfMeasurement: product.unitOfMeasurement,
                         count: count,
                       ),
               );

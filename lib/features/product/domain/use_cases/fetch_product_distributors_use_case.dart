@@ -29,10 +29,10 @@ class FetchProductDistributorsUseCase
         ProductDistributor(
           id: '1',
           distributor: Distributor(
-            id: '1',
+            id: '2',
             rating: 4.5,
             totalReviews: 20,
-            name: 'Поставщик',
+            name: 'Поставщик 2',
           ),
           deliveryDate: DateTime.now().add(Duration(days: 2)),
           cost: 100,
@@ -40,10 +40,10 @@ class FetchProductDistributorsUseCase
         ProductDistributor(
           id: '1',
           distributor: Distributor(
-            id: '1',
+            id: '3',
             rating: 4.5,
             totalReviews: 20,
-            name: 'Поставщик',
+            name: 'Поставщик 3',
           ),
           deliveryDate: DateTime.now().add(Duration(days: 2)),
           cost: 100,
@@ -51,10 +51,10 @@ class FetchProductDistributorsUseCase
         ProductDistributor(
           id: '1',
           distributor: Distributor(
-            id: '1',
+            id: '4',
             rating: 4.5,
             totalReviews: 20,
-            name: 'Поставщик',
+            name: 'Поставщик 4',
           ),
           deliveryDate: DateTime.now().add(Duration(days: 2)),
           cost: 100,
@@ -62,10 +62,10 @@ class FetchProductDistributorsUseCase
         ProductDistributor(
           id: '1',
           distributor: Distributor(
-            id: '1',
+            id: '5',
             rating: 4.5,
             totalReviews: 20,
-            name: 'Поставщик',
+            name: 'Поставщик 5',
           ),
           deliveryDate: DateTime.now().add(Duration(days: 2)),
           cost: 100,

@@ -65,5 +65,9 @@
   "yesLogout": "Да, выйти",
   "wrongLoginOrPassword": "Вы ввели неверные имя пользователя и/или пароль ",
   "minOrderSum": "Мин. сумма заказа {cost} ₸",
-  "select": "Выбрать"
+  "minimalOrderSum": "Минимальная сумма заказа: {cost} ₸",
+  "select": "Выбрать",
+  "selectAll": "Выбрать все",
+  "proceedToCheckout": "Перейти к оформлению",
+  "cartUnits": "{num} ед."
 }

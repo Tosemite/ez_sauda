@@ -12,7 +12,7 @@ class ProductDto implements Product {
   @override
   final List<String> imageUrls;
   @override
-  int get unitPrice => 100; //TODO fetch from backend
+  double get unitPrice => 100; //TODO fetch from backend
   @override
   final int packageVolume;
   @override

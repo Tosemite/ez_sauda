@@ -90,52 +90,54 @@ class ProductScreen extends StatelessWidget {
                   color: context.colors.outline,
                 ),
                 switch (state.distributors) {
-                //TODO handle failure
+                  //TODO handle failure
                   ValueInitial<List<ProductDistributor>>() ||
-                  ValueInProgress<List<ProductDistributor>>() || ValueFailure<
-                      List<ProductDistributor>>() =>
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 60),
-                          child: CircularProgressIndicator(),
-                        ),
+                  ValueInProgress<List<ProductDistributor>>() ||
+                  ValueFailure<List<ProductDistributor>>() =>
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 60),
+                        child: CircularProgressIndicator(),
                       ),
-                  ValueSuccess<List<ProductDistributor>>(value: final distributors) =>
-                      ProductDistributorsView(distributors: distributors)
+                    ),
+                  ValueSuccess<List<ProductDistributor>>(
+                    value: final distributors
+                  ) =>
+                    ProductDistributorsView(distributors: distributors)
                 },
                 Divider(
                   color: context.colors.outline,
                 ),
                 switch (state.reviews) {
-                //TODO handle failure
+                  //TODO handle failure
                   ValueInitial<FetchReviewsResponse>() ||
-                  ValueInProgress<FetchReviewsResponse>() || ValueFailure<
-                      FetchReviewsResponse>() =>
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 60),
-                          child: CircularProgressIndicator(),
-                        ),
+                  ValueInProgress<FetchReviewsResponse>() ||
+                  ValueFailure<FetchReviewsResponse>() =>
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 60),
+                        child: CircularProgressIndicator(),
                       ),
+                    ),
                   ValueSuccess<FetchReviewsResponse>(value: final reviews) =>
-                      ProductReviewsView(reviews: reviews)
+                    ProductReviewsView(reviews: reviews)
                 },
                 Divider(
                   color: context.colors.outline,
                 ),
                 switch (state.similarProducts) {
-                //TODO handle failure
+                  //TODO handle failure
                   ValueInitial<List<Product>>() ||
-                  ValueInProgress<List<Product>>() || ValueFailure<
-                      List<Product>>() =>
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 60),
-                          child: CircularProgressIndicator(),
-                        ),
+                  ValueInProgress<List<Product>>() ||
+                  ValueFailure<List<Product>>() =>
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 60),
+                        child: CircularProgressIndicator(),
                       ),
+                    ),
                   ValueSuccess<List<Product>>(value: final products) =>
-                      ProductSimilarProductsView(products: products)
+                    ProductSimilarProductsView(products: products)
                 },
               ],
             );
@@ -143,11 +145,14 @@ class ProductScreen extends StatelessWidget {
         ),
         bottomNavigationBar: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
-            final existingProduct = state.productCounter[product.id];
+            final existingProduct = state.productMap[product.id];
             if (existingProduct == null) {
               return SizedBox.shrink();
             }
-            return ProductCheckoutBar(existingProduct: existingProduct);
+            return ProductCheckoutBar(
+              productCartInfo: existingProduct,
+              product: product,
+            );
           },
         ),
       ),

@@ -1,4 +1,3 @@
-import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_event.dart';
@@ -7,12 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductCounterButton extends StatefulWidget {
   const ProductCounterButton({
-    required this.product,
+    required this.productId,
     required this.count,
+    this.unitOfMeasurement,
     super.key,
   });
 
-  final Product product;
+  final String productId;
+  final String? unitOfMeasurement;
   final int count;
 
   @override
@@ -56,7 +57,7 @@ class _ProductCounterButtonState extends State<ProductCounterButton> {
                 });
                 context.read<CartBloc>().add(
                       CartProductAmountChanged(
-                        product: widget.product,
+                        productId: widget.productId,
                         count: _count,
                       ),
                     );
@@ -71,7 +72,7 @@ class _ProductCounterButtonState extends State<ProductCounterButton> {
                 horizontal: 10,
               ),
               child: Text(
-                '$_count ${widget.product.unitOfMeasurement}',
+                '$_count ${widget.unitOfMeasurement ?? 'штук'}', //todo remove hardcode
                 textAlign: TextAlign.center,
               ),
             ),
@@ -83,7 +84,7 @@ class _ProductCounterButtonState extends State<ProductCounterButton> {
                 });
                 context.read<CartBloc>().add(
                       CartProductAmountChanged(
-                        product: widget.product,
+                        productId: widget.productId,
                         count: _count,
                       ),
                     );

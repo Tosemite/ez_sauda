@@ -135,7 +135,7 @@ ThemeData theme() {
           width: 1.5,
           color: colorScheme.outline,
         ),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(2),
       ),
     ),
     badgeTheme: BadgeThemeData(
@@ -183,6 +183,13 @@ class AppTypography {
 
   TextStyle get headline3Regular => TextStyle(
     fontWeight: FontWeight.w400,
+    fontSize: 24,
+    height: 1,
+    letterSpacing: 0,
+  );
+
+  TextStyle get headline3Medium => TextStyle(
+    fontWeight: FontWeight.w500,
     fontSize: 24,
     height: 1,
     letterSpacing: 0,

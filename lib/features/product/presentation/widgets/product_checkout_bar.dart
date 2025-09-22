@@ -1,18 +1,23 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
 import 'package:ez_sauda/core/presentation/routes/routes.dart';
 import 'package:ez_sauda/core/presentation/widgets/product_counter_button.dart';
-import 'package:ez_sauda/features/cart/presentation/blocs/cart_state.dart';
+import 'package:ez_sauda/features/cart/domain/models/cart_product.dart';
 import 'package:flutter/material.dart';
 
 class ProductCheckoutBar extends StatelessWidget {
-  const ProductCheckoutBar({required this.existingProduct, super.key});
+  const ProductCheckoutBar({
+    required this.productCartInfo,
+    required this.product,
+    super.key,
+  });
 
-  final ProductCounter existingProduct;
+  final Product product;
+  final CartProduct productCartInfo;
 
   @override
   Widget build(BuildContext context) {
-    final product = existingProduct.product;
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.vertical(
@@ -36,7 +41,7 @@ class ProductCheckoutBar extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${existingProduct.count * product.unitPrice} ₸',
+                          '${productCartInfo.totalPrice} ₸',
                           style: context.typography.headline5Bold,
                         ),
                         Text(
@@ -50,8 +55,9 @@ class ProductCheckoutBar extends StatelessWidget {
                     ),
                   ),
                   ProductCounterButton(
-                    product: product,
-                    count: existingProduct.count,
+                    productId: product.id,
+                    unitOfMeasurement: product.unitOfMeasurement,
+                    count: productCartInfo.quantity,
                   ),
                 ],
               ),

@@ -2,7 +2,7 @@ class Product {
   final String id;
   final String name;
   final List<String> imageUrls;
-  final int unitPrice;
+  final double unitPrice;
   final int packageVolume;
   final String unitOfMeasurement;
   final String ingredients;

@@ -1,8 +1,12 @@
 import 'package:ez_sauda/core/data/extensions/date_time_extension.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
 import 'package:ez_sauda/core/presentation/widgets/rating_info_view.dart';
+import 'package:ez_sauda/features/cart/presentation/blocs/cart_bloc.dart';
+import 'package:ez_sauda/features/cart/presentation/blocs/cart_event.dart';
 import 'package:ez_sauda/features/product/domain/models/product_distributor.dart';
+import 'package:ez_sauda/features/product/presentation/blocs/product_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDistributorView extends StatelessWidget {
   const ProductDistributorView({
@@ -43,7 +47,12 @@ class ProductDistributorView extends StatelessWidget {
               SizedBox(
                 height: 32,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => context.read<CartBloc>().add(
+                        CartProductAdded(
+                          product: context.read<ProductBloc>().state.product,
+                          distributor: distributor.distributor,
+                        ),
+                      ),
                   child: Text(context.l10n.select),
                 ),
               ),

@@ -41,6 +41,7 @@ dependencies:
   another_flushbar: ^1.12.30
   mobile_scanner: ^7.0.1
   rxdart: ^0.28.0
+  sorted_list: ^1.0.0
 
 
 dev_dependencies:

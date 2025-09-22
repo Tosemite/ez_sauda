@@ -113,11 +113,11 @@ extension GetItInjectableX on _i174.GetIt {
     final httpModule = _$HttpModule();
     final dioConfig = _$DioConfig();
     gh.factory<_i816.LocaleConfig>(() => _i816.LocaleConfig());
-    gh.factory<_i46.CartBloc>(() => _i46.CartBloc());
     gh.factory<_i581.FetchReviewsUseCase>(
         () => const _i581.FetchReviewsUseCase());
     gh.factory<_i361.FetchProductDistributorsUseCase>(
         () => const _i361.FetchProductDistributorsUseCase());
+    gh.factory<_i46.CartBloc>(() => _i46.CartBloc());
     gh.singleton<_i207.Talker>(() => talkerConfig.talker);
     gh.singleton<_i229.Encoding>(() => encodingModule.encoding);
     await gh.singletonAsync<_i460.SharedPreferences>(

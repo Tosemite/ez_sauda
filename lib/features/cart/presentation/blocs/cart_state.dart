@@ -1,4 +1,6 @@
-import 'package:ez_sauda/core/domain/models/product.dart';
+import 'dart:collection';
+
+import 'package:ez_sauda/features/cart/domain/models/cart_product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cart_state.freezed.dart';
@@ -6,25 +8,21 @@ part 'cart_state.freezed.dart';
 @freezed
 class CartState with _$CartState {
   const CartState({
+    required this.productList,
     this.totalItemCount = 0,
-    this.productCounter = const {},
+    this.totalPrice = 0,
+    this.productMap = const {},
+    this.selectedDistributorIds = const {},
   });
 
   @override
   final int totalItemCount;
   @override
-  final Map<String, ProductCounter> productCounter;
-}
-
-@freezed
-class ProductCounter with _$ProductCounter {
-  const ProductCounter({
-    required this.count,
-    required this.product,
-  });
-
+  final double totalPrice;
   @override
-  final int count;
+  final Map<String, CartProduct> productMap;
   @override
-  final Product product;
+  final List<CartProduct> productList;
+  @override
+  final Set<String> selectedDistributorIds;
 }

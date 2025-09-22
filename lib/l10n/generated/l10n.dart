@@ -549,9 +549,39 @@ class Localization {
     );
   }
 
+  /// `Минимальная сумма заказа: {cost} ₸`
+  String minimalOrderSum(Object cost) {
+    return Intl.message(
+      'Минимальная сумма заказа: $cost ₸',
+      name: 'minimalOrderSum',
+      desc: '',
+      args: [cost],
+    );
+  }
+
   /// `Выбрать`
   String get select {
     return Intl.message('Выбрать', name: 'select', desc: '', args: []);
+  }
+
+  /// `Выбрать все`
+  String get selectAll {
+    return Intl.message('Выбрать все', name: 'selectAll', desc: '', args: []);
+  }
+
+  /// `Перейти к оформлению`
+  String get proceedToCheckout {
+    return Intl.message(
+      'Перейти к оформлению',
+      name: 'proceedToCheckout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{num} ед.`
+  String cartUnits(Object num) {
+    return Intl.message('$num ед.', name: 'cartUnits', desc: '', args: [num]);
   }
 }
 

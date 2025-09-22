@@ -20,17 +20,21 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
-  static String m0(cost) => "Мин. сумма заказа ${cost} ₸";
+  static String m0(num) => "${num} ед.";
 
-  static String m1(amount) => "Мин. сумма заказа ${amount} ₸";
+  static String m1(cost) => "Мин. сумма заказа ${cost} ₸";
 
-  static String m2(count) => "(${count} отзывов)";
+  static String m2(amount) => "Мин. сумма заказа ${amount} ₸";
 
-  static String m3(count) => "${count} товаров";
+  static String m3(cost) => "Минимальная сумма заказа: ${cost} ₸";
 
-  static String m4(count) => "Отзывы (${count})";
+  static String m4(count) => "(${count} отзывов)";
 
-  static String m5(count) => "Поставщик (${count})";
+  static String m5(count) => "${count} товаров";
+
+  static String m6(count) => "Отзывы (${count})";
+
+  static String m7(count) => "Поставщик (${count})";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -46,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "cart": MessageLookupByLibrary.simpleMessage("Корзина"),
+    "cartUnits": m0,
     "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
     "categories": MessageLookupByLibrary.simpleMessage("Категории"),
     "cheapFirst": MessageLookupByLibrary.simpleMessage("Сначала дешевые"),
@@ -84,9 +89,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "measurementUnit": MessageLookupByLibrary.simpleMessage(
       "Единица измерения",
     ),
-    "minOrderSum": m0,
-    "minOrderSumAmount": m1,
-    "ofReviewsCount": m2,
+    "minOrderSum": m1,
+    "minOrderSumAmount": m2,
+    "minimalOrderSum": m3,
+    "ofReviewsCount": m4,
     "orderHistory": MessageLookupByLibrary.simpleMessage("История заказов"),
     "orderHistoryDescription": MessageLookupByLibrary.simpleMessage(
       "Тут Вы можете повторить, сделать возврат, обменять, отменить заказ",
@@ -98,13 +104,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "privacyPolicy": MessageLookupByLibrary.simpleMessage(
       "Политика конфиденциальности",
     ),
+    "proceedToCheckout": MessageLookupByLibrary.simpleMessage(
+      "Перейти к оформлению",
+    ),
     "productAmountInPackage": MessageLookupByLibrary.simpleMessage(
       "Количество предметов в упаковке",
     ),
     "productDescription": MessageLookupByLibrary.simpleMessage(
       "Описание товара",
     ),
-    "productsAmount": m3,
+    "productsAmount": m5,
     "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
     "promotions": MessageLookupByLibrary.simpleMessage("Акции"),
     "readMore": MessageLookupByLibrary.simpleMessage("Подробнее"),
@@ -112,13 +121,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "returnAndExchangeConditions": MessageLookupByLibrary.simpleMessage(
       "Условия возврата и обмена",
     ),
-    "reviewsCount": m4,
+    "reviewsCount": m6,
     "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
     "search": MessageLookupByLibrary.simpleMessage("Поиск"),
     "select": MessageLookupByLibrary.simpleMessage("Выбрать"),
+    "selectAll": MessageLookupByLibrary.simpleMessage("Выбрать все"),
     "shown": MessageLookupByLibrary.simpleMessage("Показано:"),
     "similarProducts": MessageLookupByLibrary.simpleMessage("Похожие товары"),
-    "supplierCount": m5,
+    "supplierCount": m7,
     "supplierList": MessageLookupByLibrary.simpleMessage("Список поставщиков"),
     "supplierListDescription": MessageLookupByLibrary.simpleMessage(
       "С которыми Вы взаимодействовали",

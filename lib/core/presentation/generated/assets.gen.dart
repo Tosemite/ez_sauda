@@ -37,6 +37,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/comment.svg
   SvgGenImage get comment => const SvgGenImage('assets/icons/comment.svg');
 
+  /// File path: assets/icons/delete_outlined.svg
+  SvgGenImage get deleteOutlined =>
+      const SvgGenImage('assets/icons/delete_outlined.svg');
+
   /// File path: assets/icons/down.svg
   SvgGenImage get down => const SvgGenImage('assets/icons/down.svg');
 
@@ -89,6 +93,7 @@ class $AssetsIconsGen {
         catalog,
         closeCircle,
         comment,
+        deleteOutlined,
         down,
         edit,
         exclamationCircle,
