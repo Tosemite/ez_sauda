@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:ez_sauda/core/presentation/bloc/base_state.dart';
 import 'package:ez_sauda/features/cart/domain/models/cart_product.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_event.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_state.dart';
@@ -23,6 +24,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartDistributorProductsUnselected>(_unselectDistributorProducts);
     on<CartAllProductsUnselected>(_unselectAllProducts);
     on<CartSelectedProductsCleared>(_clearSelectedProducts);
+    on<CartOrderConfirmed>(_confirmOrder);
   }
 
   Future<void> _incrementProduct(
@@ -39,7 +41,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         state.copyWith(
           totalItemCount: state.totalItemCount - removedProduct.quantity,
           productList:
-              sortByDistributorId(state.productList..remove(removedProduct)),
+              _sortByDistributorId(state.productList..remove(removedProduct)),
           productMap: productMap,
           totalPrice: state.totalPrice + removedProduct.totalPrice,
           selectedDistributorIds: {},
@@ -65,7 +67,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           totalItemCount: state.totalItemCount -
               existingProduct.quantity +
               newProduct.quantity,
-          productList: sortByDistributorId(
+          productList: _sortByDistributorId(
             state.productList
               ..remove(existingProduct)
               ..add(newProduct),
@@ -107,7 +109,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     emit(
       state.copyWith(
         totalItemCount: state.totalItemCount + 1,
-        productList: sortByDistributorId(state.productList..add(cartProduct)),
+        productList: _sortByDistributorId(state.productList..add(cartProduct)),
         productMap: productMap,
         totalPrice: state.totalPrice + cartProduct.totalPrice,
         selectedDistributorIds: {},
@@ -175,7 +177,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       state.copyWith(
         totalItemCount: newProductList.fold(0, (prev, e) => prev + e.quantity),
         totalPrice: newProductList.fold(0, (prev, e) => prev + e.totalPrice),
-        productList: sortByDistributorId(newProductList),
+        productList: _sortByDistributorId(newProductList),
         productMap: state.productMap
           ..removeWhere(
             (k, e) => state.selectedDistributorIds.contains(
@@ -187,10 +189,32 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     );
   }
 
-  List<CartProduct> sortByDistributorId(List<CartProduct> products) {
+  List<CartProduct> _sortByDistributorId(List<CartProduct> products) {
     return products.sorted(
       (p1, p2) => p1.distributor.id.compareTo(
         p2.distributor.id,
+      ),
+    );
+  }
+
+  Future<void> _confirmOrder(
+    CartOrderConfirmed event,
+    Emitter<CartState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        orderCreateState: BaseInProgress(),
+      ),
+    );
+    await Future.delayed(Duration(milliseconds: 400));
+    emit(
+      state.copyWith(
+        orderCreateState: BaseSuccess(),
+        totalItemCount: 0,
+        totalPrice: 0,
+        productMap: {},
+        productList: [],
+        selectedDistributorIds: {},
       ),
     );
   }

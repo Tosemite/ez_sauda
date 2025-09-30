@@ -4,10 +4,17 @@ import 'package:ez_sauda/core/domain/models/category.dart';
 import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/presentation/screens/app_screen.dart';
 import 'package:ez_sauda/core/presentation/screens/app_top_bar_wrapper_screen.dart.dart';
+import 'package:ez_sauda/features/cart/presentation/screens/cart_confirm_order_screen.dart';
+import 'package:ez_sauda/features/cart/presentation/screens/cart_order_success_screen.dart';
 import 'package:ez_sauda/features/cart/presentation/screens/cart_screen.dart';
+import 'package:ez_sauda/features/cart/presentation/screens/cart_wrapper_screen.dart';
 import 'package:ez_sauda/features/catalog/presentation/screens/catalog_screen.dart';
 import 'package:ez_sauda/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:ez_sauda/features/home/presentation/screens/home_screen.dart';
+import 'package:ez_sauda/features/orders/domain/models/product_order.dart';
+import 'package:ez_sauda/features/orders/presentation/screens/order_info_screen.dart';
+import 'package:ez_sauda/features/orders/presentation/screens/order_list_screen.dart';
+import 'package:ez_sauda/features/orders/presentation/screens/order_wrapper_screen.dart';
 import 'package:ez_sauda/features/product/presentation/screens/product_screen.dart';
 import 'package:ez_sauda/features/search/presentation/screens/product_search_screen.dart';
 import 'package:ez_sauda/features/profile/presentation/screens/profile_screen.dart';
@@ -40,8 +47,18 @@ class AppRouter extends RootStackRouter {
                   path: 'catalog',
                 ),
                 AutoRoute(
-                  page: CartRoute.page,
+                  page: CartWrapperRoute.page,
                   path: 'cart',
+                  children: [
+                    AutoRoute(
+                      page: CartRoute.page,
+                      path: 'initial',
+                    ),
+                    AutoRoute(
+                      page: CartConfirmOrderRoute.page,
+                      path: 'confirm',
+                    ),
+                  ],
                 ),
                 AutoRoute(
                   page: FavoritesRoute.page,
@@ -60,6 +77,25 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: ProductSearchRoute.page,
               path: 'search',
+            ),
+            AutoRoute(
+              page: CartOrderSuccessRoute.page,
+              path: 'order-success',
+            ),
+            AutoRoute(
+              page: OrderWrapperRoute.page,
+              path: 'my-orders',
+              children: [
+                AutoRoute(
+                  page: OrderListRoute.page,
+                  path: 'list',
+                  initial: true,
+                ),
+                AutoRoute(
+                  page: OrderInfoRoute.page,
+                  path: 'info',
+                ),
+              ],
             ),
           ],
         ),

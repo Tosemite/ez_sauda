@@ -124,6 +124,7 @@ ThemeData theme() {
       borderRadius: BorderRadius.circular(5),
     ),
     checkboxTheme: CheckboxThemeData(
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       fillColor: WidgetStateProperty.resolveWith((states) {
         if (states.any((element) => element == WidgetState.selected)) {
           return colorScheme.primary;
@@ -156,56 +157,70 @@ class AppTypography {
   TextStyle get headline5Bold => TextStyle(
         fontWeight: FontWeight.w700,
         fontSize: 16,
-        height: 1,
+        height: 1.1,
         letterSpacing: 0,
       );
 
   TextStyle get headline5Medium => TextStyle(
         fontWeight: FontWeight.w500,
         fontSize: 16,
-        height: 1,
+        height: 1.1,
         letterSpacing: 0,
       );
 
   TextStyle get headline5Regular => TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 16,
-        height: 1,
+        height: 1.1,
         letterSpacing: 0,
       );
 
   TextStyle get headline4Medium => TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 20,
-    height: 1,
+    height: 1.1,
     letterSpacing: 0,
   );
 
   TextStyle get headline3Regular => TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 24,
-    height: 1,
+    height: 1.1,
     letterSpacing: 0,
   );
 
   TextStyle get headline3Medium => TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 24,
-    height: 1,
+    height: 1.1,
+    letterSpacing: 0,
+  );
+
+  TextStyle get headline2Medium => TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 30,
+    height: 1.1,
     letterSpacing: 0,
   );
 
   TextStyle get bodyRegular => TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 14,
-        height: 1,
+        height: 1.1,
         letterSpacing: 0,
       );
+
+  TextStyle get bodyBold => TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: 14,
+    height: 1.1,
+    letterSpacing: 0,
+  );
 
   TextStyle get footnoteDescription => TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 12,
-        height: 1,
+        height: 1.1,
         letterSpacing: 0,
       );
 }

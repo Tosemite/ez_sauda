@@ -3,8 +3,9 @@ import 'dart:math';
 import 'package:auto_route/auto_route.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
 import 'package:ez_sauda/core/presentation/routes/routes.dart';
+import 'package:ez_sauda/core/presentation/widgets/barcode_icon_button.dart';
 import 'package:ez_sauda/core/presentation/widgets/product_list_view.dart';
-import 'package:ez_sauda/core/presentation/widgets/search_text_field.dart';
+import 'package:ez_sauda/core/presentation/widgets/form/search_text_field.dart';
 import 'package:ez_sauda/features/home/presentation/blocs/home_cubit.dart';
 import 'package:ez_sauda/features/home/presentation/blocs/home_state.dart';
 import 'package:ez_sauda/core/presentation/widgets/catalog_tile.dart';
@@ -31,8 +32,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: SearchTextField(
                   onTap: () => context.router.push(ProductSearchRoute()),
-                  onBarcodeScanned: (barcode) => context.router.push(
-                    ProductSearchRoute(barcode: barcode),
+                  suffixIcon: BarcodeIconButton(
+                    onBarcodeScanned: (barcode) => context.router.push(
+                      ProductSearchRoute(barcode: barcode),
+                    ),
                   ),
                 ),
               ),

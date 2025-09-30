@@ -1,0 +1,4 @@
+enum OrderSort {
+  date,
+  price,
+}

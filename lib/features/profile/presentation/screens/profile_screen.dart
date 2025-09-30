@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:ez_sauda/core/presentation/bloc/value_state.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
+import 'package:ez_sauda/core/presentation/routes/routes.dart';
 import 'package:ez_sauda/features/profile/domain/models/user.dart';
 import 'package:ez_sauda/features/profile/presentation/blocs/product_bloc.dart';
 import 'package:ez_sauda/features/profile/presentation/blocs/profile_state.dart';
@@ -75,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
           ProfileActionTile(
             title: context.l10n.orderHistory,
             subtitle: context.l10n.orderHistoryDescription,
-            onTap: () {},
+            onTap: () => context.router.navigate(OrderListRoute()),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),

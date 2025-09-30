@@ -18,7 +18,7 @@ class ProductDistributorsView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              context.l10n.supplierCount(distributors.length),
+              context.l10n.distributorCount(distributors.length),
               style: context.typography.headline5Medium,
             ),
             InkWell(

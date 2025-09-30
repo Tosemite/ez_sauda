@@ -30,6 +30,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/catalog.svg
   SvgGenImage get catalog => const SvgGenImage('assets/icons/catalog.svg');
 
+  /// File path: assets/icons/check_circle.svg
+  SvgGenImage get checkCircle =>
+      const SvgGenImage('assets/icons/check_circle.svg');
+
   /// File path: assets/icons/close_circle.svg
   SvgGenImage get closeCircle =>
       const SvgGenImage('assets/icons/close_circle.svg');
@@ -57,14 +61,23 @@ class $AssetsIconsGen {
   /// File path: assets/icons/eye.svg
   SvgGenImage get eye => const SvgGenImage('assets/icons/eye.svg');
 
+  /// File path: assets/icons/filter.svg
+  SvgGenImage get filter => const SvgGenImage('assets/icons/filter.svg');
+
   /// File path: assets/icons/heart.svg
   SvgGenImage get heart => const SvgGenImage('assets/icons/heart.svg');
 
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
 
+  /// File path: assets/icons/mail.svg
+  SvgGenImage get mail => const SvgGenImage('assets/icons/mail.svg');
+
   /// File path: assets/icons/minus.svg
   SvgGenImage get minus => const SvgGenImage('assets/icons/minus.svg');
+
+  /// File path: assets/icons/phone.svg
+  SvgGenImage get phone => const SvgGenImage('assets/icons/phone.svg');
 
   /// File path: assets/icons/plus.svg
   SvgGenImage get plus => const SvgGenImage('assets/icons/plus.svg');
@@ -82,6 +95,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/user.svg
   SvgGenImage get user => const SvgGenImage('assets/icons/user.svg');
 
+  /// File path: assets/icons/user_avatar.svg
+  SvgGenImage get userAvatar =>
+      const SvgGenImage('assets/icons/user_avatar.svg');
+
   /// File path: assets/icons/van.svg
   SvgGenImage get van => const SvgGenImage('assets/icons/van.svg');
 
@@ -91,6 +108,7 @@ class $AssetsIconsGen {
         arrowRight,
         bell,
         catalog,
+        checkCircle,
         closeCircle,
         comment,
         deleteOutlined,
@@ -99,14 +117,18 @@ class $AssetsIconsGen {
         exclamationCircle,
         exit,
         eye,
+        filter,
         heart,
         home,
+        mail,
         minus,
+        phone,
         plus,
         scan,
         shoppingCart,
         star,
         user,
+        userAvatar,
         van
       ];
 }

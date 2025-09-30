@@ -43,6 +43,38 @@ class AppTopBarWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CartConfirmOrderScreen]
+class CartConfirmOrderRoute extends PageRouteInfo<void> {
+  const CartConfirmOrderRoute({List<PageRouteInfo>? children})
+      : super(CartConfirmOrderRoute.name, initialChildren: children);
+
+  static const String name = 'CartConfirmOrderRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CartConfirmOrderScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [CartOrderSuccessScreen]
+class CartOrderSuccessRoute extends PageRouteInfo<void> {
+  const CartOrderSuccessRoute({List<PageRouteInfo>? children})
+      : super(CartOrderSuccessRoute.name, initialChildren: children);
+
+  static const String name = 'CartOrderSuccessRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CartOrderSuccessScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [CartScreen]
 class CartRoute extends PageRouteInfo<void> {
   const CartRoute({List<PageRouteInfo>? children})
@@ -54,6 +86,22 @@ class CartRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const CartScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [CartWrapperScreen]
+class CartWrapperRoute extends PageRouteInfo<void> {
+  const CartWrapperRoute({List<PageRouteInfo>? children})
+      : super(CartWrapperRoute.name, initialChildren: children);
+
+  static const String name = 'CartWrapperRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CartWrapperScreen();
     },
   );
 }
@@ -102,6 +150,85 @@ class HomeRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const HomeScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [OrderInfoScreen]
+class OrderInfoRoute extends PageRouteInfo<OrderInfoRouteArgs> {
+  OrderInfoRoute({
+    required ProductOrder order,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderInfoRoute.name,
+          args: OrderInfoRouteArgs(order: order, key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderInfoRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<OrderInfoRouteArgs>();
+      return OrderInfoScreen(order: args.order, key: args.key);
+    },
+  );
+}
+
+class OrderInfoRouteArgs {
+  const OrderInfoRouteArgs({required this.order, this.key});
+
+  final ProductOrder order;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'OrderInfoRouteArgs{order: $order, key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! OrderInfoRouteArgs) return false;
+    return order == other.order && key == other.key;
+  }
+
+  @override
+  int get hashCode => order.hashCode ^ key.hashCode;
+}
+
+/// generated route for
+/// [OrderListScreen]
+class OrderListRoute extends PageRouteInfo<void> {
+  const OrderListRoute({List<PageRouteInfo>? children})
+      : super(OrderListRoute.name, initialChildren: children);
+
+  static const String name = 'OrderListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const OrderListScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [OrderWrapperScreen]
+class OrderWrapperRoute extends PageRouteInfo<void> {
+  const OrderWrapperRoute({List<PageRouteInfo>? children})
+      : super(OrderWrapperRoute.name, initialChildren: children);
+
+  static const String name = 'OrderWrapperRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const OrderWrapperScreen();
     },
   );
 }

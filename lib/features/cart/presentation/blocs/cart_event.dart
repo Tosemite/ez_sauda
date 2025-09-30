@@ -48,3 +48,7 @@ class CartAllProductsUnselected extends CartEvent {
 class CartSelectedProductsCleared extends CartEvent {
   const CartSelectedProductsCleared();
 }
+
+class CartOrderConfirmed extends CartEvent {
+  const CartOrderConfirmed();
+}

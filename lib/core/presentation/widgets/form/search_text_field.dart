@@ -1,4 +1,3 @@
-import 'package:ez_sauda/core/presentation/dialogs/barcode_scanner_dialog.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -7,13 +6,13 @@ class SearchTextField extends StatefulWidget {
     super.key,
     this.value,
     this.onTap,
-    this.onBarcodeScanned,
+    this.suffixIcon,
     this.onChanged,
   });
 
   final String? value;
   final VoidCallback? onTap;
-  final Function(String)? onBarcodeScanned;
+  final Widget? suffixIcon;
   final VoidCallback? onChanged;
 
   @override
@@ -39,24 +38,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
       onTap: widget.onTap,
       decoration: InputDecoration(
         hintText: context.l10n.search,
-        suffixIcon: InkWell(
-          onTap: () async {
-            final barcode = await BarcodeScannerDialog.show(context);
-            if (barcode != null && context.mounted) {
-              widget.onBarcodeScanned?.call(barcode);
-            }
-          },
-          borderRadius: BorderRadius.circular(100),
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: context.icons.scan.svg(
-              colorFilter: ColorFilter.mode(
-                context.colors.primary,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-        ),
+        suffixIcon: widget.suffixIcon,
       ),
     );
   }

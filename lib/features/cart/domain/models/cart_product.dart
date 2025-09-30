@@ -8,6 +8,7 @@ class CartProduct {
   final double unitPrice;
   final double totalPrice;
   final int quantity;
+  final String comment;
 
   CartProduct({
     required this.productId,
@@ -17,5 +18,6 @@ class CartProduct {
     required this.unitPrice,
     required this.totalPrice,
     required this.quantity,
+    this.comment = '',
   });
 }

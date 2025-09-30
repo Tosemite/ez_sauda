@@ -1,5 +1,4 @@
-import 'dart:collection';
-
+import 'package:ez_sauda/core/presentation/bloc/base_state.dart';
 import 'package:ez_sauda/features/cart/domain/models/cart_product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,6 +12,7 @@ class CartState with _$CartState {
     this.totalPrice = 0,
     this.productMap = const {},
     this.selectedDistributorIds = const {},
+    this.orderCreateState = const BaseInitial(),
   });
 
   @override
@@ -25,4 +25,6 @@ class CartState with _$CartState {
   final List<CartProduct> productList;
   @override
   final Set<String> selectedDistributorIds;
+  @override
+  final BaseState orderCreateState;
 }

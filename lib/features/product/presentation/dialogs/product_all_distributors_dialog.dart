@@ -26,7 +26,7 @@ class ProductAllDistributorsDialog extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          context.l10n.suppliers,
+          context.l10n.distributors,
           style: context.typography.headline5Bold,
         ),
         const SizedBox(height: 12),

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
-import 'package:ez_sauda/core/presentation/widgets/search_text_field.dart';
+import 'package:ez_sauda/core/presentation/widgets/barcode_icon_button.dart';
+import 'package:ez_sauda/core/presentation/widgets/form/search_text_field.dart';
 import 'package:ez_sauda/features/catalog/presentation/blocs/catalog_cubit.dart';
 import 'package:ez_sauda/features/catalog/presentation/blocs/catalog_state.dart';
 import 'package:ez_sauda/features/catalog/presentation/widgets/brands_list_view.dart';
@@ -27,7 +28,9 @@ class CatalogScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
                   ),
-                  child: SearchTextField(),
+                  child: SearchTextField(
+                    suffixIcon: BarcodeIconButton(),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 Padding(

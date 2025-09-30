@@ -2,8 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:ez_sauda/core/domain/models/brand.dart';
 import 'package:ez_sauda/core/domain/models/category.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
+import 'package:ez_sauda/core/presentation/widgets/barcode_icon_button.dart';
 import 'package:ez_sauda/core/presentation/widgets/product_list_view.dart';
-import 'package:ez_sauda/core/presentation/widgets/search_text_field.dart';
+import 'package:ez_sauda/core/presentation/widgets/form/search_text_field.dart';
 import 'package:ez_sauda/features/search/presentation/blocs/search_cubit.dart';
 import 'package:ez_sauda/features/search/presentation/blocs/search_state.dart';
 import 'package:flutter/material.dart';
@@ -27,16 +28,16 @@ class ProductSearchScreen extends StatelessWidget {
     final appBarTitle = category?.name ?? brand?.name;
     return Scaffold(
       appBar: AppBar(
-              leading: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: IconButton(
-                  splashRadius: 20,
-                  onPressed: context.router.pop,
-                  icon: context.icons.arrowLeft.svg(),
-                ),
-              ),
-              title: appBarTitle != null ? Text(appBarTitle) : null,
-            ),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: IconButton(
+            splashRadius: 20,
+            onPressed: context.router.pop,
+            icon: context.icons.arrowLeft.svg(),
+          ),
+        ),
+        title: appBarTitle != null ? Text(appBarTitle) : null,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 24,
@@ -56,7 +57,10 @@ class ProductSearchScreen extends StatelessWidget {
                 children: [
                   SearchTextField(
                     value: state.query,
-                    onBarcodeScanned: context.read<SearchCubit>().queryChanged,
+                    suffixIcon: BarcodeIconButton(
+                      onBarcodeScanned:
+                          context.read<SearchCubit>().queryChanged,
+                    ),
                   ),
                   Expanded(
                     child: products != null

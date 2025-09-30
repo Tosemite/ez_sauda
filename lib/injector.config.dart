@@ -36,6 +36,8 @@ import 'package:ez_sauda/core/domain/usecases/fetch_brands_use_case.dart'
     as _i252;
 import 'package:ez_sauda/core/domain/usecases/fetch_categories_use_case.dart'
     as _i23;
+import 'package:ez_sauda/core/domain/usecases/fetch_distributors_use_case.dart'
+    as _i136;
 import 'package:ez_sauda/core/domain/usecases/fetch_products_use_case.dart'
     as _i776;
 import 'package:ez_sauda/core/presentation/bloc/app_bloc.dart' as _i1054;
@@ -61,6 +63,10 @@ import 'package:ez_sauda/features/catalog/presentation/blocs/catalog_cubit.dart'
     as _i349;
 import 'package:ez_sauda/features/home/presentation/blocs/home_cubit.dart'
     as _i446;
+import 'package:ez_sauda/features/orders/domain/use_cases/fetch_orders_use_case.dart'
+    as _i828;
+import 'package:ez_sauda/features/orders/presentation/blocs/order_bloc.dart'
+    as _i308;
 import 'package:ez_sauda/features/product/domain/use_cases/fetch_product_distributors_use_case.dart'
     as _i361;
 import 'package:ez_sauda/features/product/domain/use_cases/fetch_reviews_use_case.dart'
@@ -118,6 +124,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i361.FetchProductDistributorsUseCase>(
         () => const _i361.FetchProductDistributorsUseCase());
     gh.factory<_i46.CartBloc>(() => _i46.CartBloc());
+    gh.factory<_i828.FetchOrdersUseCase>(
+        () => const _i828.FetchOrdersUseCase());
+    gh.factory<_i136.FetchDistributorsUseCase>(
+        () => const _i136.FetchDistributorsUseCase());
     gh.singleton<_i207.Talker>(() => talkerConfig.talker);
     gh.singleton<_i229.Encoding>(() => encodingModule.encoding);
     await gh.singletonAsync<_i460.SharedPreferences>(
@@ -138,6 +148,10 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i470.RepositoryConfigDev(),
       registerFor: {_dev},
     );
+    gh.factory<_i308.OrderBloc>(() => _i308.OrderBloc(
+          gh<_i828.FetchOrdersUseCase>(),
+          gh<_i136.FetchDistributorsUseCase>(),
+        ));
     gh.singleton<_i279.TokenSource>(() => _i279.TokenSourceImpl());
     gh.singleton<_i519.Client>(
       () => httpModule.prodClient,

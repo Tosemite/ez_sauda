@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
+import 'package:ez_sauda/core/presentation/extensions/number_extension.dart';
 import 'package:ez_sauda/core/presentation/routes/routes.dart';
 import 'package:ez_sauda/core/presentation/widgets/product_counter_button.dart';
 import 'package:ez_sauda/features/cart/domain/models/cart_product.dart';
@@ -41,7 +42,7 @@ class ProductCheckoutBar extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${productCartInfo.totalPrice} ₸',
+                          '${productCartInfo.totalPrice.formatted} ₸',
                           style: context.typography.headline5Bold,
                         ),
                         Text(

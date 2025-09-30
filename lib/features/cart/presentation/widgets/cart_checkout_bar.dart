@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
+import 'package:ez_sauda/core/presentation/extensions/number_extension.dart';
 import 'package:ez_sauda/core/presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -36,13 +37,12 @@ class CartCheckoutBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '$totalCost ₸',
+                      '${totalCost.formatted} ₸',
                       style: context.typography.headline3Medium,
                     ),
                     Text(
                       context.l10n.cartUnits(totalAmount),
-                      style:
-                          context.typography.footnoteDescription.copyWith(
+                      style: context.typography.footnoteDescription.copyWith(
                         color: context.colors.secondary.withAlpha(217),
                       ),
                     ),
@@ -52,7 +52,9 @@ class CartCheckoutBar extends StatelessWidget {
               SizedBox(
                 height: 40,
                 child: ElevatedButton(
-                  onPressed: () => context.router.navigate(CartRoute()),
+                  onPressed: () => context.router.navigate(
+                    CartConfirmOrderRoute(),
+                  ),
                   child: Text(context.l10n.proceedToCheckout),
                 ),
               ),

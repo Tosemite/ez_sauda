@@ -19,6 +19,7 @@ mixin _$CartState {
   Map<String, CartProduct> get productMap;
   List<CartProduct> get productList;
   Set<String> get selectedDistributorIds;
+  BaseState get orderCreateState;
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,7 +42,9 @@ mixin _$CartState {
             const DeepCollectionEquality()
                 .equals(other.productList, productList) &&
             const DeepCollectionEquality()
-                .equals(other.selectedDistributorIds, selectedDistributorIds));
+                .equals(other.selectedDistributorIds, selectedDistributorIds) &&
+            (identical(other.orderCreateState, orderCreateState) ||
+                other.orderCreateState == orderCreateState));
   }
 
   @override
@@ -51,11 +54,12 @@ mixin _$CartState {
       totalPrice,
       const DeepCollectionEquality().hash(productMap),
       const DeepCollectionEquality().hash(productList),
-      const DeepCollectionEquality().hash(selectedDistributorIds));
+      const DeepCollectionEquality().hash(selectedDistributorIds),
+      orderCreateState);
 
   @override
   String toString() {
-    return 'CartState(totalItemCount: $totalItemCount, totalPrice: $totalPrice, productMap: $productMap, productList: $productList, selectedDistributorIds: $selectedDistributorIds)';
+    return 'CartState(totalItemCount: $totalItemCount, totalPrice: $totalPrice, productMap: $productMap, productList: $productList, selectedDistributorIds: $selectedDistributorIds, orderCreateState: $orderCreateState)';
   }
 }
 
@@ -69,7 +73,8 @@ abstract mixin class $CartStateCopyWith<$Res> {
       int totalItemCount,
       double totalPrice,
       Map<String, CartProduct> productMap,
-      Set<String> selectedDistributorIds});
+      Set<String> selectedDistributorIds,
+      BaseState orderCreateState});
 }
 
 /// @nodoc
@@ -89,6 +94,7 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
     Object? totalPrice = null,
     Object? productMap = null,
     Object? selectedDistributorIds = null,
+    Object? orderCreateState = null,
   }) {
     return _then(CartState(
       productList: null == productList
@@ -111,6 +117,10 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
           ? _self.selectedDistributorIds
           : selectedDistributorIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
+      orderCreateState: null == orderCreateState
+          ? _self.orderCreateState
+          : orderCreateState // ignore: cast_nullable_to_non_nullable
+              as BaseState,
     ));
   }
 }

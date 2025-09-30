@@ -18,10 +18,8 @@ class Localization {
   static Localization? _current;
 
   static Localization get current {
-    assert(
-      _current != null,
-      'No instance of Localization was loaded. Try to initialize the Localization delegate before accessing Localization.current.',
-    );
+    assert(_current != null,
+        'No instance of Localization was loaded. Try to initialize the Localization delegate before accessing Localization.current.');
     return _current!;
   }
 
@@ -43,10 +41,8 @@ class Localization {
 
   static Localization of(BuildContext context) {
     final instance = Localization.maybeOf(context);
-    assert(
-      instance != null,
-      'No instance of Localization present in the widget tree. Did you add Localization.delegate in localizationsDelegates?',
-    );
+    assert(instance != null,
+        'No instance of Localization present in the widget tree. Did you add Localization.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -66,37 +62,72 @@ class Localization {
 
   /// `Готово`
   String get done {
-    return Intl.message('Готово', name: 'done', desc: '', args: []);
+    return Intl.message(
+      'Готово',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Главная`
   String get home {
-    return Intl.message('Главная', name: 'home', desc: '', args: []);
+    return Intl.message(
+      'Главная',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Каталог`
   String get catalog {
-    return Intl.message('Каталог', name: 'catalog', desc: '', args: []);
+    return Intl.message(
+      'Каталог',
+      name: 'catalog',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Корзина`
   String get cart {
-    return Intl.message('Корзина', name: 'cart', desc: '', args: []);
+    return Intl.message(
+      'Корзина',
+      name: 'cart',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Избранное`
   String get favorite {
-    return Intl.message('Избранное', name: 'favorite', desc: '', args: []);
+    return Intl.message(
+      'Избранное',
+      name: 'favorite',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Профиль`
   String get profile {
-    return Intl.message('Профиль', name: 'profile', desc: '', args: []);
+    return Intl.message(
+      'Профиль',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Войти`
   String get logIn {
-    return Intl.message('Войти', name: 'logIn', desc: '', args: []);
+    return Intl.message(
+      'Войти',
+      name: 'logIn',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Войдите в систему, чтобы получить полный доступ к сервису`
@@ -111,12 +142,22 @@ class Localization {
 
   /// `Логин`
   String get username {
-    return Intl.message('Логин', name: 'username', desc: '', args: []);
+    return Intl.message(
+      'Логин',
+      name: 'username',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Пароль`
   String get password {
-    return Intl.message('Пароль', name: 'password', desc: '', args: []);
+    return Intl.message(
+      'Пароль',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Нажимая кнопку “Войти” Вы принимаете условия Политики конфиденциальности`
@@ -131,17 +172,32 @@ class Localization {
 
   /// `Поиск`
   String get search {
-    return Intl.message('Поиск', name: 'search', desc: '', args: []);
+    return Intl.message(
+      'Поиск',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Категории`
   String get categories {
-    return Intl.message('Категории', name: 'categories', desc: '', args: []);
+    return Intl.message(
+      'Категории',
+      name: 'categories',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Посмотреть все`
   String get viewAll {
-    return Intl.message('Посмотреть все', name: 'viewAll', desc: '', args: []);
+    return Intl.message(
+      'Посмотреть все',
+      name: 'viewAll',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Рекомендации`
@@ -156,7 +212,12 @@ class Localization {
 
   /// `В корзину`
   String get toCart {
-    return Intl.message('В корзину', name: 'toCart', desc: '', args: []);
+    return Intl.message(
+      'В корзину',
+      name: 'toCart',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `({count} отзывов)`
@@ -171,12 +232,12 @@ class Localization {
 
   /// `Бренды`
   String get brands {
-    return Intl.message('Бренды', name: 'brands', desc: '', args: []);
-  }
-
-  /// `Поставщики`
-  String get suppliers {
-    return Intl.message('Поставщики', name: 'suppliers', desc: '', args: []);
+    return Intl.message(
+      'Бренды',
+      name: 'brands',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `О товаре`
@@ -190,10 +251,10 @@ class Localization {
   }
 
   /// `Поставщик ({count})`
-  String supplierCount(Object count) {
+  String distributorCount(Object count) {
     return Intl.message(
       'Поставщик ($count)',
-      name: 'supplierCount',
+      name: 'distributorCount',
       desc: '',
       args: [count],
     );
@@ -201,7 +262,12 @@ class Localization {
 
   /// `Доставка`
   String get delivery {
-    return Intl.message('Доставка', name: 'delivery', desc: '', args: []);
+    return Intl.message(
+      'Доставка',
+      name: 'delivery',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Отзывы ({count})`
@@ -236,12 +302,22 @@ class Localization {
 
   /// `Штрихкод`
   String get barcode {
-    return Intl.message('Штрихкод', name: 'barcode', desc: '', args: []);
+    return Intl.message(
+      'Штрихкод',
+      name: 'barcode',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Состав`
   String get composition {
-    return Intl.message('Состав', name: 'composition', desc: '', args: []);
+    return Intl.message(
+      'Состав',
+      name: 'composition',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Количество предметов в упаковке`
@@ -286,7 +362,12 @@ class Localization {
 
   /// `Показано:`
   String get shown {
-    return Intl.message('Показано:', name: 'shown', desc: '', args: []);
+    return Intl.message(
+      'Показано:',
+      name: 'shown',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `{count} товаров`
@@ -301,7 +382,12 @@ class Localization {
 
   /// `Акции`
   String get promotions {
-    return Intl.message('Акции', name: 'promotions', desc: '', args: []);
+    return Intl.message(
+      'Акции',
+      name: 'promotions',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Сначала дешевые`
@@ -326,12 +412,22 @@ class Localization {
 
   /// `Выше рейтинг`
   String get highRating {
-    return Intl.message('Выше рейтинг', name: 'highRating', desc: '', args: []);
+    return Intl.message(
+      'Выше рейтинг',
+      name: 'highRating',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Ниже рейтинг`
   String get lowRating {
-    return Intl.message('Ниже рейтинг', name: 'lowRating', desc: '', args: []);
+    return Intl.message(
+      'Ниже рейтинг',
+      name: 'lowRating',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `С рейтингом от 4.5`
@@ -346,22 +442,42 @@ class Localization {
 
   /// `Цена`
   String get cost {
-    return Intl.message('Цена', name: 'cost', desc: '', args: []);
+    return Intl.message(
+      'Цена',
+      name: 'cost',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Применить`
   String get apply {
-    return Intl.message('Применить', name: 'apply', desc: '', args: []);
+    return Intl.message(
+      'Применить',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Сохранить`
   String get save {
-    return Intl.message('Сохранить', name: 'save', desc: '', args: []);
+    return Intl.message(
+      'Сохранить',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Подробнее`
   String get readMore {
-    return Intl.message('Подробнее', name: 'readMore', desc: '', args: []);
+    return Intl.message(
+      'Подробнее',
+      name: 'readMore',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `История заказов`
@@ -396,7 +512,12 @@ class Localization {
 
   /// `Ваши отзывы`
   String get yourReviews {
-    return Intl.message('Ваши отзывы', name: 'yourReviews', desc: '', args: []);
+    return Intl.message(
+      'Ваши отзывы',
+      name: 'yourReviews',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Техподдержка EasySauda`
@@ -421,7 +542,12 @@ class Localization {
 
   /// `Жалобы`
   String get complaints {
-    return Intl.message('Жалобы', name: 'complaints', desc: '', args: []);
+    return Intl.message(
+      'Жалобы',
+      name: 'complaints',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Политика конфиденциальности`
@@ -496,7 +622,12 @@ class Localization {
 
   /// `Выйти`
   String get logout {
-    return Intl.message('Выйти', name: 'logout', desc: '', args: []);
+    return Intl.message(
+      'Выйти',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Вы уверены, что хотите выйти из аккаунта?`
@@ -521,12 +652,22 @@ class Localization {
 
   /// `Отмена`
   String get cancel {
-    return Intl.message('Отмена', name: 'cancel', desc: '', args: []);
+    return Intl.message(
+      'Отмена',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Да, выйти`
   String get yesLogout {
-    return Intl.message('Да, выйти', name: 'yesLogout', desc: '', args: []);
+    return Intl.message(
+      'Да, выйти',
+      name: 'yesLogout',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Вы ввели неверные имя пользователя и/или пароль `
@@ -561,12 +702,22 @@ class Localization {
 
   /// `Выбрать`
   String get select {
-    return Intl.message('Выбрать', name: 'select', desc: '', args: []);
+    return Intl.message(
+      'Выбрать',
+      name: 'select',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Выбрать все`
   String get selectAll {
-    return Intl.message('Выбрать все', name: 'selectAll', desc: '', args: []);
+    return Intl.message(
+      'Выбрать все',
+      name: 'selectAll',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Перейти к оформлению`
@@ -581,7 +732,502 @@ class Localization {
 
   /// `{num} ед.`
   String cartUnits(Object num) {
-    return Intl.message('$num ед.', name: 'cartUnits', desc: '', args: [num]);
+    return Intl.message(
+      '$num ед.',
+      name: 'cartUnits',
+      desc: '',
+      args: [num],
+    );
+  }
+
+  /// `Оформление заказа`
+  String get placingAnOrder {
+    return Intl.message(
+      'Оформление заказа',
+      name: 'placingAnOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Доставка: {date}`
+  String deliveryDate(Object date) {
+    return Intl.message(
+      'Доставка: $date',
+      name: 'deliveryDate',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `Комментарии к заказу`
+  String get commentsOnTheOrder {
+    return Intl.message(
+      'Комментарии к заказу',
+      name: 'commentsOnTheOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Введите комментарии`
+  String get enterComment {
+    return Intl.message(
+      'Введите комментарии',
+      name: 'enterComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Подтверждение`
+  String get confirm {
+    return Intl.message(
+      'Подтверждение',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Изменить дату доставки`
+  String get changeDeliveryDate {
+    return Intl.message(
+      'Изменить дату доставки',
+      name: 'changeDeliveryDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш заказ`
+  String get yourOrder {
+    return Intl.message(
+      'Ваш заказ',
+      name: 'yourOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{num} товара`
+  String numItems(Object num) {
+    return Intl.message(
+      '$num товара',
+      name: 'numItems',
+      desc: '',
+      args: [num],
+    );
+  }
+
+  /// `Товары ({num})`
+  String itemsNum(Object num) {
+    return Intl.message(
+      'Товары ($num)',
+      name: 'itemsNum',
+      desc: '',
+      args: [num],
+    );
+  }
+
+  /// `Итого`
+  String get total {
+    return Intl.message(
+      'Итого',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Оформить заказ`
+  String get placeAnOrder {
+    return Intl.message(
+      'Оформить заказ',
+      name: 'placeAnOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Нажимая на кнопку, вы соглашаетесь с Условиями обработки персональных данных, а также с Условиями продажи`
+  String get privacyPolicySubtitle {
+    return Intl.message(
+      'Нажимая на кнопку, вы соглашаетесь с Условиями обработки персональных данных, а также с Условиями продажи',
+      name: 'privacyPolicySubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Спасибо за заказ!`
+  String get thankYouForOrder {
+    return Intl.message(
+      'Спасибо за заказ!',
+      name: 'thankYouForOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш заказ успешно оформлен\nи уже передан поставщику.`
+  String get orderSuccess {
+    return Intl.message(
+      'Ваш заказ успешно оформлен\nи уже передан поставщику.',
+      name: 'orderSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вернуться к покупкам`
+  String get returnToShopping {
+    return Intl.message(
+      'Вернуться к покупкам',
+      name: 'returnToShopping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Мои заказы`
+  String get myOrders {
+    return Intl.message(
+      'Мои заказы',
+      name: 'myOrders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Заказ №{number}`
+  String orderNumber(Object number) {
+    return Intl.message(
+      'Заказ №$number',
+      name: 'orderNumber',
+      desc: '',
+      args: [number],
+    );
+  }
+
+  /// `Сумма заказа`
+  String get orderSum {
+    return Intl.message(
+      'Сумма заказа',
+      name: 'orderSum',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Количество`
+  String get amount {
+    return Intl.message(
+      'Количество',
+      name: 'amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{num} товаров`
+  String itemsAmount(Object num) {
+    return Intl.message(
+      '$num товаров',
+      name: 'itemsAmount',
+      desc: '',
+      args: [num],
+    );
+  }
+
+  /// `Планируемая доставка`
+  String get plannedDelivery {
+    return Intl.message(
+      'Планируемая доставка',
+      name: 'plannedDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отвественный`
+  String get responsible {
+    return Intl.message(
+      'Отвественный',
+      name: 'responsible',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Статус`
+  String get status {
+    return Intl.message(
+      'Статус',
+      name: 'status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `На рассмотрении`
+  String get underReview {
+    return Intl.message(
+      'На рассмотрении',
+      name: 'underReview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Подтвержден`
+  String get confirmed {
+    return Intl.message(
+      'Подтвержден',
+      name: 'confirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `В доставке`
+  String get inDelivery {
+    return Intl.message(
+      'В доставке',
+      name: 'inDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Доставлен`
+  String get delivered {
+    return Intl.message(
+      'Доставлен',
+      name: 'delivered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отменен`
+  String get cancelled {
+    return Intl.message(
+      'Отменен',
+      name: 'cancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Возвращен`
+  String get returned {
+    return Intl.message(
+      'Возвращен',
+      name: 'returned',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Дата`
+  String get date {
+    return Intl.message(
+      'Дата',
+      name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сегодня`
+  String get today {
+    return Intl.message(
+      'Сегодня',
+      name: 'today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Неделя`
+  String get week {
+    return Intl.message(
+      'Неделя',
+      name: 'week',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Месяц`
+  String get month {
+    return Intl.message(
+      'Месяц',
+      name: 'month',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сумма`
+  String get sum {
+    return Intl.message(
+      'Сумма',
+      name: 'sum',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сортировать`
+  String get sort {
+    return Intl.message(
+      'Сортировать',
+      name: 'sort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `По дате заказа`
+  String get byOrderDate {
+    return Intl.message(
+      'По дате заказа',
+      name: 'byOrderDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `По сумме заказа`
+  String get byOrderSum {
+    return Intl.message(
+      'По сумме заказа',
+      name: 'byOrderSum',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `У вас пока нет заказов`
+  String get youHaveNoOrders {
+    return Intl.message(
+      'У вас пока нет заказов',
+      name: 'youHaveNoOrders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Перейти в каталог`
+  String get goToCatalog {
+    return Intl.message(
+      'Перейти в каталог',
+      name: 'goToCatalog',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Заказы не найдены`
+  String get ordersNotFound {
+    return Intl.message(
+      'Заказы не найдены',
+      name: 'ordersNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Попробуйте изменить параметры поиска`
+  String get tryToChangeSearchParameters {
+    return Intl.message(
+      'Попробуйте изменить параметры поиска',
+      name: 'tryToChangeSearchParameters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Фильтр`
+  String get filter {
+    return Intl.message(
+      'Фильтр',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Поставщики`
+  String get distributors {
+    return Intl.message(
+      'Поставщики',
+      name: 'distributors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Поставщик`
+  String get distributor {
+    return Intl.message(
+      'Поставщик',
+      name: 'distributor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Стоимость доставки`
+  String get deliveryCost {
+    return Intl.message(
+      'Стоимость доставки',
+      name: 'deliveryCost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Бесплатно`
+  String get free {
+    return Intl.message(
+      'Бесплатно',
+      name: 'free',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Стоимость товаров`
+  String get productsCost {
+    return Intl.message(
+      'Стоимость товаров',
+      name: 'productsCost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Чек об оплате`
+  String get paymentReceipt {
+    return Intl.message(
+      'Чек об оплате',
+      name: 'paymentReceipt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Заказы`
+  String get orders {
+    return Intl.message(
+      'Заказы',
+      name: 'orders',
+      desc: '',
+      args: [],
+    );
   }
 }
 
@@ -589,7 +1235,9 @@ class AppLocalizationDelegate extends LocalizationsDelegate<Localization> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
-    return const <Locale>[Locale.fromSubtags(languageCode: 'ru')];
+    return const <Locale>[
+      Locale.fromSubtags(languageCode: 'ru'),
+    ];
   }
 
   @override

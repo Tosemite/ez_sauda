@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/presentation/bloc/app_bloc.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
+import 'package:ez_sauda/core/presentation/extensions/number_extension.dart';
 import 'package:ez_sauda/core/presentation/routes/routes.dart';
 import 'package:ez_sauda/core/presentation/widgets/product_counter_button.dart';
 import 'package:ez_sauda/core/presentation/widgets/rating_info_view.dart';
@@ -47,7 +48,7 @@ class ProductView extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            '${product.unitPrice} ₸/${product.unitOfMeasurement}',
+            '${product.unitPrice.formatted} ₸/${product.unitOfMeasurement}',
             style: context.typography.headline5Bold.copyWith(
               color: context.colors.primary,
             ),

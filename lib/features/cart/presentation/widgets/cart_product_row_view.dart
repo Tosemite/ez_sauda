@@ -1,4 +1,5 @@
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
+import 'package:ez_sauda/core/presentation/extensions/number_extension.dart';
 import 'package:ez_sauda/core/presentation/widgets/product_counter_button.dart';
 import 'package:ez_sauda/features/cart/domain/models/cart_product.dart';
 import 'package:flutter/material.dart';
@@ -43,14 +44,14 @@ class CartProductRowView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${cartProduct.totalPrice} ₸',
+                    '${cartProduct.totalPrice.formatted} ₸',
                     style: context.typography.headline5Bold.copyWith(
                       color: context.colors.primary,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '${cartProduct.unitPrice} ₸/1 шт.',
+                    '${cartProduct.unitPrice.formatted} ₸/1 шт.',
                     style: context.typography.bodyRegular.copyWith(
                       color: context.colors.secondary.withAlpha(115),
                     ),
