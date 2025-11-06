@@ -1,9 +1,10 @@
-import 'package:ez_sauda/features/product/domain/models/distributor.dart';
-
 class CartProduct {
   final String productId;
-  final Distributor distributor;
+  final String distributorId;
+  final String distributorName;
+  final String distributorLogo;
   final String name;
+  final String imageUrl;
   final String description;
   final double unitPrice;
   final double totalPrice;
@@ -12,8 +13,11 @@ class CartProduct {
 
   CartProduct({
     required this.productId,
-    required this.distributor,
+    required this.distributorId,
+    required this.distributorName,
+    required this.distributorLogo,
     required this.name,
+    required this.imageUrl,
     required this.description,
     required this.unitPrice,
     required this.totalPrice,

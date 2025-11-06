@@ -12,6 +12,6 @@ abstract class UserSource {
   factory UserSource(Dio dio) =
   _UserSource;
 
-  @GET('/user/me')
+  @GET('/users/me')
   Future<UserDto> getCurrentUser();
 }

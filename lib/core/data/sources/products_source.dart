@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ez_sauda/core/data/dtos/product_distributor_dto.dart';
 import 'package:ez_sauda/core/data/dtos/product_dto.dart';
 import 'package:ez_sauda/core/data/dtos/pageable_dto.dart';
 import 'package:injectable/injectable.dart';
@@ -19,5 +20,12 @@ abstract class ProductsSource {
     @Query('sortBy') String? sortBy,
     @Query('sortOrder') String? sortOrder,
     @Query('categoryId') int? categoryId,
+  });
+
+  @GET('/products/{productId}/distributors')
+  Future<PageableDto<ProductDistributorDto>> getProductDistributors({
+    @Path() required String productId,
+    @Query('page') int? page,
+    @Query('pageSize') int? pageSize,
   });
 }

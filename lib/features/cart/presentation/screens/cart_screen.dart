@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
+import 'package:ez_sauda/core/presentation/bloc/base_state.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_event.dart';
@@ -17,9 +18,14 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
+        if (state.cartFetchState is BaseInProgress) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
         if (state.productList.isEmpty) {
           return Center(
-            child: Text('У вас нет предметов в корзине'),
+            child: Text(context.l10n.youHaveNoCartItems),
           );
         }
         return Scaffold(
@@ -36,7 +42,7 @@ class CartScreen extends StatelessWidget {
                     Checkbox(
                       value: state.productList.none(
                         (e) => !state.selectedDistributorIds
-                            .contains(e.distributor.id),
+                            .contains(e.distributorId),
                       ),
                       onChanged: (selectAll) {
                         if (selectAll == null) return;
@@ -69,8 +75,8 @@ class CartScreen extends StatelessWidget {
               ),
               for (int i = 0; i < state.productList.length; i++)
                 if (i == 0 ||
-                    state.productList[i - 1].distributor.id !=
-                        state.productList[i].distributor.id)
+                    state.productList[i - 1].distributorId !=
+                        state.productList[i].distributorId)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -79,17 +85,17 @@ class CartScreen extends StatelessWidget {
                           const SizedBox(width: 10),
                           Checkbox(
                             value: state.selectedDistributorIds.contains(
-                              state.productList[i].distributor.id,
+                              state.productList[i].distributorId,
                             ),
                             onChanged: (selectAll) {
                               if (selectAll == null) return;
                               context.read<CartBloc>().add(
                                     selectAll
                                         ? CartDistributorProductsSelected(
-                                            state.productList[i].distributor.id,
+                                            state.productList[i].distributorId,
                                           )
                                         : CartDistributorProductsUnselected(
-                                            state.productList[i].distributor.id,
+                                            state.productList[i].distributorId,
                                           ),
                                   );
                             },
@@ -97,7 +103,7 @@ class CartScreen extends StatelessWidget {
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
-                              state.productList[i].distributor.name,
+                              state.productList[i].distributorName,
                               style: context.typography.headline5Medium,
                             ),
                           ),

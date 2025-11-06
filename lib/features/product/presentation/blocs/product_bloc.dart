@@ -1,11 +1,11 @@
 import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/domain/models/result.dart';
+import 'package:ez_sauda/core/domain/usecases/fetch_products_use_case.dart';
 import 'package:ez_sauda/core/presentation/bloc/value_state.dart';
 import 'package:ez_sauda/features/product/domain/models/fetch_reviews_response.dart';
 import 'package:ez_sauda/features/product/domain/models/product_distributor.dart';
 import 'package:ez_sauda/features/product/domain/use_cases/fetch_product_distributors_use_case.dart';
 import 'package:ez_sauda/features/product/domain/use_cases/fetch_reviews_use_case.dart';
-import 'package:ez_sauda/features/product/domain/use_cases/fetch_similar_products_use_case.dart';
 import 'package:ez_sauda/features/product/presentation/blocs/product_event.dart';
 import 'package:ez_sauda/features/product/presentation/blocs/product_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +17,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     @factoryParam required Product product,
     required this.fetchReviewsUseCase,
     required this.fetchProductDistributorsUseCase,
-    required this.fetchSimilarProductsUseCase,
+    required this.fetchProductsUseCase,
   }) : super(ProductState(product: product)) {
     on<ProductReviewsFetched>(_fetchReviews);
     on<ProductDistributorsFetched>(_fetchDistributors);
@@ -29,7 +29,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   final FetchReviewsUseCase fetchReviewsUseCase;
   final FetchProductDistributorsUseCase fetchProductDistributorsUseCase;
-  final FetchSimilarProductsUseCase fetchSimilarProductsUseCase;
+  final FetchProductsUseCase fetchProductsUseCase;
 
   Future<void> _fetchReviews(
     ProductReviewsFetched event,
@@ -82,12 +82,21 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     ProductSimilarProductsFetched event,
     Emitter<ProductState> emit,
   ) async {
-    final result = await fetchSimilarProductsUseCase(state.product.id);
+    final result = await fetchProductsUseCase(
+      FetchProductsParams(
+        page: 0,
+        categoryId: state.product.categoryId,
+      ),
+    );
     switch (result) {
-      case SuccessResult<List<Product>>(value: final reviews):
+      case SuccessResult<List<Product>>(value: final products):
         emit(
           state.copyWith(
-            similarProducts: ValueSuccess(reviews),
+            similarProducts: ValueSuccess(
+              products.where(
+                (e) => e.id != state.product.id,
+              ).toList(),
+            ),
           ),
         );
       case ErrorResult<List<Product>>(failure: final failure):

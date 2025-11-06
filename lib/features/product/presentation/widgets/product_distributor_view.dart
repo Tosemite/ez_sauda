@@ -1,20 +1,25 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:ez_sauda/core/data/extensions/date_time_extension.dart';
+import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
-import 'package:ez_sauda/core/presentation/widgets/rating_info_view.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_event.dart';
+import 'package:ez_sauda/features/cart/presentation/blocs/cart_state.dart';
 import 'package:ez_sauda/features/product/domain/models/product_distributor.dart';
-import 'package:ez_sauda/features/product/presentation/blocs/product_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDistributorView extends StatelessWidget {
   const ProductDistributorView({
     required this.distributor,
+    required this.product,
+    this.shouldPop = false,
     super.key,
   });
 
+  final Product product;
   final ProductDistributor distributor;
+  final bool shouldPop;
 
   @override
   Widget build(BuildContext context) {
@@ -34,26 +39,50 @@ class ProductDistributorView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      distributor.distributor.name,
+                      distributor.distributorName,
                       style: context.typography.bodyRegular,
                     ),
-                    RatingInfoView(
-                      rating: distributor.distributor.rating,
-                      totalReviews: distributor.distributor.totalReviews,
-                    ),
+                    // RatingInfoView(
+                    //   rating: distributor.distributor.rating,
+                    //   totalReviews: distributor.distributor.totalReviews,
+                    // ),
                   ],
                 ),
               ),
               SizedBox(
                 height: 32,
-                child: ElevatedButton(
-                  onPressed: () => context.read<CartBloc>().add(
-                        CartProductAdded(
-                          product: context.read<ProductBloc>().state.product,
-                          distributor: distributor.distributor,
-                        ),
-                      ),
-                  child: Text(context.l10n.select),
+                width: 100,
+                child: BlocBuilder<CartBloc, CartState>(
+                  builder: (context, state) {
+                    final existingProduct = state.productMap[product.id];
+                    if (existingProduct != null &&
+                        existingProduct.distributorId ==
+                            distributor.distributorId) {
+                      return OutlinedButton(
+                        onPressed: () {
+                          context.read<CartBloc>().add(
+                                CartProductAmountChanged(
+                                  productId: product.id,
+                                  count: 0,
+                                ),
+                              );
+                        },
+                        child: Text(context.l10n.cancel),
+                      );
+                    }
+                    return ElevatedButton(
+                      onPressed: () {
+                        context.read<CartBloc>().add(
+                              CartProductAdded(
+                                product: product,
+                                distributor: distributor,
+                              ),
+                            );
+                        if (shouldPop) context.pop();
+                      },
+                      child: Text(context.l10n.select),
+                    );
+                  },
                 ),
               ),
             ],
@@ -87,7 +116,7 @@ class ProductDistributorView extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      distributor.deliveryDate
+                      distributor.nearestDeliveryDate
                           .formatToDayMonthFull(context.localeName),
                       style: context.typography.bodyRegular,
                     ),
@@ -95,7 +124,7 @@ class ProductDistributorView extends StatelessWidget {
                 ),
               ),
               Text(
-                '${distributor.cost} ₸/шт',
+                '${distributor.priceWithoutVat} ₸/шт',
                 style: context.typography.headline4Medium.copyWith(
                   color: context.colors.primary,
                 ),

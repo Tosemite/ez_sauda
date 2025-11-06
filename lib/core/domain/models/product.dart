@@ -1,5 +1,6 @@
 class Product {
   final String id;
+  final int? categoryId;
   final String name;
   final List<String> imageUrls;
   final double unitPrice;
@@ -9,9 +10,9 @@ class Product {
   final String description;
   final String barcode;
 
-
   const Product({
     required this.id,
+    required this.categoryId,
     required this.name,
     required this.imageUrls,
     required this.unitPrice,

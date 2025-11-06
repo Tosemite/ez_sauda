@@ -27,7 +27,7 @@ class _UserSource implements UserSource {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/user/me',
+            '/users/me',
             queryParameters: queryParameters,
             data: _data,
           )

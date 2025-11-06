@@ -28,7 +28,7 @@ class ProductCheckoutBar extends StatelessWidget {
       ),
       child: SafeArea(
         child: Container(
-          height: 110,
+          height: 112,
           padding: EdgeInsets.symmetric(
             horizontal: 24,
             vertical: 12,

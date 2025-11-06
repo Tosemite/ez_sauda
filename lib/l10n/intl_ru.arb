@@ -117,5 +117,6 @@
   "free": "Бесплатно",
   "productsCost": "Стоимость товаров",
   "paymentReceipt": "Чек об оплате",
-  "orders": "Заказы"
+  "orders": "Заказы",
+  "youHaveNoCartItems": "У вас нет предметов в корзине"
 }

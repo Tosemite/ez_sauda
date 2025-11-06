@@ -40,7 +40,7 @@ class CartConfirmOrderScreen extends StatelessWidget {
             );
           }
           final groupedProducts = state.productList.groupListsBy(
-            (e) => e.distributor.id,
+            (e) => e.distributorId,
           );
           return ListView(
             padding: EdgeInsets.symmetric(horizontal: 24),
@@ -52,7 +52,7 @@ class CartConfirmOrderScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       SizedBox(
-                        height: 110,
+                        height: 120,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: e.value.length,

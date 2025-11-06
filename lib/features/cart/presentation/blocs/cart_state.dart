@@ -13,6 +13,7 @@ class CartState with _$CartState {
     this.productMap = const {},
     this.selectedDistributorIds = const {},
     this.orderCreateState = const BaseInitial(),
+    this.cartFetchState = const BaseInitial(),
   });
 
   @override
@@ -27,4 +28,6 @@ class CartState with _$CartState {
   final Set<String> selectedDistributorIds;
   @override
   final BaseState orderCreateState;
+  @override
+  final BaseState cartFetchState;
 }

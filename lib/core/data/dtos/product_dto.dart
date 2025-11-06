@@ -8,6 +8,8 @@ class ProductDto implements Product {
   @override
   final String id;
   @override
+  final int? categoryId;
+  @override
   final String name;
   @override
   final List<String> imageUrls;
@@ -26,6 +28,7 @@ class ProductDto implements Product {
 
   ProductDto({
     required this.id,
+    required this.categoryId,
     required this.name,
     required this.imageUrls,
     required this.packageVolume,

@@ -197,6 +197,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wrongLoginOrPassword": MessageLookupByLibrary.simpleMessage(
             "Вы ввели неверные имя пользователя и/или пароль "),
         "yesLogout": MessageLookupByLibrary.simpleMessage("Да, выйти"),
+        "youHaveNoCartItems": MessageLookupByLibrary.simpleMessage(
+            "У вас нет предметов в корзине"),
         "youHaveNoOrders":
             MessageLookupByLibrary.simpleMessage("У вас пока нет заказов"),
         "yourDataWillBeSavedAfterLogout": MessageLookupByLibrary.simpleMessage(

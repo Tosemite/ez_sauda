@@ -1229,6 +1229,16 @@ class Localization {
       args: [],
     );
   }
+
+  /// `У вас нет предметов в корзине`
+  String get youHaveNoCartItems {
+    return Intl.message(
+      'У вас нет предметов в корзине',
+      name: 'youHaveNoCartItems',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Localization> {

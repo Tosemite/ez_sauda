@@ -1,15 +1,23 @@
-import 'package:ez_sauda/features/product/domain/models/distributor.dart';
-
 class ProductDistributor {
-  final String id;
-  final Distributor distributor;
-  final DateTime deliveryDate;
-  final int cost;
+  final String distributorId;
+  final String distributorName;
+  final String logoUrl;
+  final double priceWithVat;
+  final double priceWithoutVat;
+  final bool isReturnable;
+  final bool isExchangeable;
+  final bool isActive;
+  final DateTime nearestDeliveryDate;
 
   ProductDistributor({
-    required this.id,
-    required this.distributor,
-    required this.deliveryDate,
-    required this.cost,
+    required this.distributorId,
+    required this.distributorName,
+    required this.logoUrl,
+    required this.priceWithVat,
+    required this.priceWithoutVat,
+    required this.isReturnable,
+    required this.isExchangeable,
+    required this.isActive,
+    required this.nearestDeliveryDate,
   });
 }

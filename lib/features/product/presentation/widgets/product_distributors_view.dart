@@ -1,3 +1,4 @@
+import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
 import 'package:ez_sauda/features/product/domain/models/product_distributor.dart';
 import 'package:ez_sauda/features/product/presentation/dialogs/product_all_distributors_dialog.dart';
@@ -5,8 +6,13 @@ import 'package:ez_sauda/features/product/presentation/widgets/product_distribut
 import 'package:flutter/material.dart';
 
 class ProductDistributorsView extends StatelessWidget {
-  const ProductDistributorsView({required this.distributors, super.key});
+  const ProductDistributorsView({
+    required this.distributors,
+    required this.product,
+    super.key,
+  });
 
+  final Product product;
   final List<ProductDistributor> distributors;
 
   @override
@@ -25,6 +31,7 @@ class ProductDistributorsView extends StatelessWidget {
               onTap: () => ProductAllDistributorsDialog.show(
                 context,
                 distributors: distributors,
+                product: product,
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
@@ -39,7 +46,10 @@ class ProductDistributorsView extends StatelessWidget {
           ],
         ),
         for (final distributor in distributors.take(2))
-          ProductDistributorView(distributor: distributor),
+          ProductDistributorView(
+            distributor: distributor,
+            product: product,
+          ),
         SizedBox(height: 16),
       ],
     );

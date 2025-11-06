@@ -3,7 +3,7 @@ import 'package:ez_sauda/core/domain/models/brand.dart';
 import 'package:ez_sauda/core/domain/models/category.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
 import 'package:ez_sauda/core/presentation/widgets/barcode_icon_button.dart';
-import 'package:ez_sauda/core/presentation/widgets/product_list_view.dart';
+import 'package:ez_sauda/features/product/presentation/widgets/product_list_view.dart';
 import 'package:ez_sauda/core/presentation/widgets/form/search_text_field.dart';
 import 'package:ez_sauda/features/search/presentation/blocs/search_cubit.dart';
 import 'package:ez_sauda/features/search/presentation/blocs/search_state.dart';

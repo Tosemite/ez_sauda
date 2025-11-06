@@ -20,6 +20,7 @@ mixin _$CartState {
   List<CartProduct> get productList;
   Set<String> get selectedDistributorIds;
   BaseState get orderCreateState;
+  BaseState get cartFetchState;
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
@@ -44,7 +45,9 @@ mixin _$CartState {
             const DeepCollectionEquality()
                 .equals(other.selectedDistributorIds, selectedDistributorIds) &&
             (identical(other.orderCreateState, orderCreateState) ||
-                other.orderCreateState == orderCreateState));
+                other.orderCreateState == orderCreateState) &&
+            (identical(other.cartFetchState, cartFetchState) ||
+                other.cartFetchState == cartFetchState));
   }
 
   @override
@@ -55,11 +58,12 @@ mixin _$CartState {
       const DeepCollectionEquality().hash(productMap),
       const DeepCollectionEquality().hash(productList),
       const DeepCollectionEquality().hash(selectedDistributorIds),
-      orderCreateState);
+      orderCreateState,
+      cartFetchState);
 
   @override
   String toString() {
-    return 'CartState(totalItemCount: $totalItemCount, totalPrice: $totalPrice, productMap: $productMap, productList: $productList, selectedDistributorIds: $selectedDistributorIds, orderCreateState: $orderCreateState)';
+    return 'CartState(totalItemCount: $totalItemCount, totalPrice: $totalPrice, productMap: $productMap, productList: $productList, selectedDistributorIds: $selectedDistributorIds, orderCreateState: $orderCreateState, cartFetchState: $cartFetchState)';
   }
 }
 
@@ -74,7 +78,8 @@ abstract mixin class $CartStateCopyWith<$Res> {
       double totalPrice,
       Map<String, CartProduct> productMap,
       Set<String> selectedDistributorIds,
-      BaseState orderCreateState});
+      BaseState orderCreateState,
+      BaseState cartFetchState});
 }
 
 /// @nodoc
@@ -95,6 +100,7 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
     Object? productMap = null,
     Object? selectedDistributorIds = null,
     Object? orderCreateState = null,
+    Object? cartFetchState = null,
   }) {
     return _then(CartState(
       productList: null == productList
@@ -120,6 +126,10 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
       orderCreateState: null == orderCreateState
           ? _self.orderCreateState
           : orderCreateState // ignore: cast_nullable_to_non_nullable
+              as BaseState,
+      cartFetchState: null == cartFetchState
+          ? _self.cartFetchState
+          : cartFetchState // ignore: cast_nullable_to_non_nullable
               as BaseState,
     ));
   }

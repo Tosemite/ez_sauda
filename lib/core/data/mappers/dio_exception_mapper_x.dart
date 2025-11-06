@@ -21,12 +21,12 @@ extension DioExceptionMapperX on DioException {
             case >= 400 && < 500:
               return ClientFailure(
                 code: statusCode,
-                message: response?.data?['message'] ?? defaultMessage,
+                message: response?.data?['error'] ?? defaultMessage,
               );
             default:
               return ServerFailure(
                 code: statusCode,
-                message: response?.data?['message'] ?? defaultMessage,
+                message: response?.data?['error'] ?? defaultMessage,
               );
           }
         default:

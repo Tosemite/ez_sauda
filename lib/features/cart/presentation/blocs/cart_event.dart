@@ -1,8 +1,12 @@
 import 'package:ez_sauda/core/domain/models/product.dart';
-import 'package:ez_sauda/features/product/domain/models/distributor.dart';
+import 'package:ez_sauda/features/product/domain/models/product_distributor.dart';
 
 sealed class CartEvent {
   const CartEvent();
+}
+
+class CartInitialized extends CartEvent {
+  const CartInitialized();
 }
 
 class CartProductAdded extends CartEvent {
@@ -12,7 +16,7 @@ class CartProductAdded extends CartEvent {
   });
 
   final Product product;
-  final Distributor distributor;
+  final ProductDistributor distributor;
 }
 
 class CartProductAmountChanged extends CartEvent {

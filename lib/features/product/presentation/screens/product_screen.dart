@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:ez_sauda/core/domain/models/product.dart';
 import 'package:ez_sauda/core/presentation/bloc/value_state.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
+import 'package:ez_sauda/core/presentation/widgets/image_carousel.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_state.dart';
 import 'package:ez_sauda/features/product/domain/models/fetch_reviews_response.dart';
@@ -27,6 +28,7 @@ class ProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
     return BlocProvider<ProductBloc>(
       create: (_) => context.di<ProductBloc>(param1: product),
       child: Scaffold(
@@ -37,18 +39,9 @@ class ProductScreen extends StatelessWidget {
                 horizontal: 24,
               ),
               children: [
-                Container(
+                SizedBox(
                   height: 200,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: context.colors.primary,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        //TODO change to product.imageUrls logic
-                        'https://confitelia.com/6631-thickbox_default/twix-white-chocolate-pack.jpg',
-                      ),
-                    ),
-                  ),
+                  child: ImageCarousel(imageUrls: product.imageUrls),
                 ),
                 SizedBox(height: 16),
                 Text(
@@ -103,7 +96,10 @@ class ProductScreen extends StatelessWidget {
                   ValueSuccess<List<ProductDistributor>>(
                     value: final distributors
                   ) =>
-                    ProductDistributorsView(distributors: distributors)
+                    ProductDistributorsView(
+                      distributors: distributors,
+                      product: product,
+                    )
                 },
                 Divider(
                   color: context.colors.outline,
@@ -139,6 +135,7 @@ class ProductScreen extends StatelessWidget {
                   ValueSuccess<List<Product>>(value: final products) =>
                     ProductSimilarProductsView(products: products)
                 },
+                SizedBox(height: bottomPadding),
               ],
             );
           },

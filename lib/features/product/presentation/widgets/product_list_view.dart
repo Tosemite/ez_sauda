@@ -1,5 +1,5 @@
 import 'package:ez_sauda/core/domain/models/product.dart';
-import 'package:ez_sauda/core/presentation/widgets/product_view.dart';
+import 'package:ez_sauda/features/product/presentation/widgets/product_view.dart';
 import 'package:flutter/material.dart';
 
 class ProductListView extends StatelessWidget {

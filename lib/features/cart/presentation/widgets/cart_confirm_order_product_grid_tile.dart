@@ -25,10 +25,7 @@ class CartConfirmOrderProductGridTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: context.colors.outline),
                 image: DecorationImage(
-                  image: NetworkImage(
-                    //TODO change to product.imageUrls logic
-                    'https://confitelia.com/6631-thickbox_default/twix-white-chocolate-pack.jpg',
-                  ),
+                  image: NetworkImage(cartProduct.imageUrl),
                   fit: BoxFit.cover,
                 ),
               ),

@@ -3,7 +3,7 @@ import 'package:ez_sauda/core/presentation/bloc/value_state.dart';
 import 'package:ez_sauda/core/presentation/extensions/context_extension.dart';
 import 'package:ez_sauda/core/presentation/routes/routes.dart';
 import 'package:ez_sauda/features/profile/domain/models/user.dart';
-import 'package:ez_sauda/features/profile/presentation/blocs/product_bloc.dart';
+import 'package:ez_sauda/features/profile/presentation/blocs/profile_bloc.dart';
 import 'package:ez_sauda/features/profile/presentation/blocs/profile_state.dart';
 import 'package:ez_sauda/features/profile/presentation/dialogs/confirm_logout_dialog.dart';
 import 'package:ez_sauda/features/profile/presentation/widgets/profile_action_tile.dart';

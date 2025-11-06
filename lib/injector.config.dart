@@ -57,6 +57,21 @@ import 'package:ez_sauda/features/auth/domain/use_cases/observe_is_authenticated
     as _i647;
 import 'package:ez_sauda/features/auth/presentation/blocs/login_cubit.dart'
     as _i532;
+import 'package:ez_sauda/features/cart/data/services/cart_service.dart'
+    as _i634;
+import 'package:ez_sauda/features/cart/data/sources/cart_source.dart' as _i322;
+import 'package:ez_sauda/features/cart/domain/services/cart_service.dart'
+    as _i5;
+import 'package:ez_sauda/features/cart/domain/use_cases/add_cart_item_use_case.dart'
+    as _i20;
+import 'package:ez_sauda/features/cart/domain/use_cases/clear_cart_item_use_case.dart'
+    as _i29;
+import 'package:ez_sauda/features/cart/domain/use_cases/clear_cart_use_case.dart'
+    as _i398;
+import 'package:ez_sauda/features/cart/domain/use_cases/get_cart_use_case.dart'
+    as _i112;
+import 'package:ez_sauda/features/cart/domain/use_cases/update_cart_item_use_case.dart'
+    as _i598;
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_bloc.dart'
     as _i46;
 import 'package:ez_sauda/features/catalog/presentation/blocs/catalog_cubit.dart'
@@ -71,10 +86,10 @@ import 'package:ez_sauda/features/product/domain/use_cases/fetch_product_distrib
     as _i361;
 import 'package:ez_sauda/features/product/domain/use_cases/fetch_reviews_use_case.dart'
     as _i581;
-import 'package:ez_sauda/features/product/domain/use_cases/fetch_similar_products_use_case.dart'
-    as _i316;
 import 'package:ez_sauda/features/product/presentation/blocs/product_bloc.dart'
     as _i694;
+import 'package:ez_sauda/features/product/presentation/blocs/product_distributor_bloc.dart'
+    as _i616;
 import 'package:ez_sauda/features/profile/data/services/user_service.dart'
     as _i640;
 import 'package:ez_sauda/features/profile/data/sources/user_source.dart'
@@ -83,8 +98,8 @@ import 'package:ez_sauda/features/profile/domain/services/user_service.dart'
     as _i796;
 import 'package:ez_sauda/features/profile/domain/use_cases/fetch_current_user_use_case.dart'
     as _i84;
-import 'package:ez_sauda/features/profile/presentation/blocs/product_bloc.dart'
-    as _i390;
+import 'package:ez_sauda/features/profile/presentation/blocs/profile_bloc.dart'
+    as _i928;
 import 'package:ez_sauda/features/search/presentation/blocs/search_cubit.dart'
     as _i280;
 import 'package:ez_sauda/features/search/presentation/blocs/search_state.dart'
@@ -121,9 +136,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i816.LocaleConfig>(() => _i816.LocaleConfig());
     gh.factory<_i581.FetchReviewsUseCase>(
         () => const _i581.FetchReviewsUseCase());
-    gh.factory<_i361.FetchProductDistributorsUseCase>(
-        () => const _i361.FetchProductDistributorsUseCase());
-    gh.factory<_i46.CartBloc>(() => _i46.CartBloc());
     gh.factory<_i828.FetchOrdersUseCase>(
         () => const _i828.FetchOrdersUseCase());
     gh.factory<_i136.FetchDistributorsUseCase>(
@@ -176,6 +188,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i51.ProductsSource>(() => _i51.ProductsSource(gh<_i361.Dio>()));
     gh.factory<_i363.AuthSource>(() => _i363.AuthSource(gh<_i361.Dio>()));
     gh.factory<_i57.UserSource>(() => _i57.UserSource(gh<_i361.Dio>()));
+    gh.factory<_i322.CartSource>(() => _i322.CartSource(gh<_i361.Dio>()));
     gh.singleton<_i912.ProductsService>(() => _i11.ProductsServiceImpl(
           productsSource: gh<_i51.ProductsSource>(),
           localeConfig: gh<_i816.LocaleConfig>(),
@@ -186,17 +199,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i776.FetchProductsUseCase>(
         () => _i776.FetchProductsUseCase(gh<_i912.ProductsService>()));
-    gh.factory<_i316.FetchSimilarProductsUseCase>(
-        () => _i316.FetchSimilarProductsUseCase(gh<_i912.ProductsService>()));
-    gh.singleton<_i281.AuthService>(() => _i1003.AuthServiceImpl(
-          authSource: gh<_i363.AuthSource>(),
-          tokenSource: gh<_i279.TokenSource>(),
-          localeConfig: gh<_i816.LocaleConfig>(),
-        ));
-    gh.singleton<_i1028.CategoriesService>(() => _i755.CategoriesServiceImpl(
-          categoriesSource: gh<_i1042.CategoriesSource>(),
-          localeConfig: gh<_i816.LocaleConfig>(),
-        ));
+    gh.factory<_i361.FetchProductDistributorsUseCase>(() =>
+        _i361.FetchProductDistributorsUseCase(gh<_i912.ProductsService>()));
     gh.factoryParam<_i694.ProductBloc, _i730.Product, dynamic>((
       product,
       _,
@@ -206,7 +210,29 @@ extension GetItInjectableX on _i174.GetIt {
           fetchReviewsUseCase: gh<_i581.FetchReviewsUseCase>(),
           fetchProductDistributorsUseCase:
               gh<_i361.FetchProductDistributorsUseCase>(),
-          fetchSimilarProductsUseCase: gh<_i316.FetchSimilarProductsUseCase>(),
+          fetchProductsUseCase: gh<_i776.FetchProductsUseCase>(),
+        ));
+    gh.singleton<_i281.AuthService>(() => _i1003.AuthServiceImpl(
+          authSource: gh<_i363.AuthSource>(),
+          tokenSource: gh<_i279.TokenSource>(),
+          localeConfig: gh<_i816.LocaleConfig>(),
+        ));
+    gh.singleton<_i1028.CategoriesService>(() => _i755.CategoriesServiceImpl(
+          categoriesSource: gh<_i1042.CategoriesSource>(),
+          localeConfig: gh<_i816.LocaleConfig>(),
+        ));
+    gh.factoryParam<_i616.ProductDistributorBloc, String, dynamic>((
+      productId,
+      _,
+    ) =>
+        _i616.ProductDistributorBloc(
+          productId: productId,
+          fetchProductDistributorsUseCase:
+              gh<_i361.FetchProductDistributorsUseCase>(),
+        ));
+    gh.singleton<_i5.CartService>(() => _i634.CartServiceImpl(
+          cartSource: gh<_i322.CartSource>(),
+          localeConfig: gh<_i816.LocaleConfig>(),
         ));
     gh.factoryParam<_i280.SearchCubit, _i996.SearchParams?, dynamic>((
       params,
@@ -220,6 +246,16 @@ extension GetItInjectableX on _i174.GetIt {
           userSource: gh<_i57.UserSource>(),
           localeConfig: gh<_i816.LocaleConfig>(),
         ));
+    gh.factory<_i598.UpdateCartItemUseCase>(
+        () => _i598.UpdateCartItemUseCase(gh<_i5.CartService>()));
+    gh.factory<_i398.ClearCartUseCase>(
+        () => _i398.ClearCartUseCase(gh<_i5.CartService>()));
+    gh.factory<_i112.GetCartUseCase>(
+        () => _i112.GetCartUseCase(gh<_i5.CartService>()));
+    gh.factory<_i20.AddCartItemUseCase>(
+        () => _i20.AddCartItemUseCase(gh<_i5.CartService>()));
+    gh.factory<_i29.ClearCartItemUseCase>(
+        () => _i29.ClearCartItemUseCase(gh<_i5.CartService>()));
     gh.factory<_i23.FetchCategoriesUseCase>(
         () => _i23.FetchCategoriesUseCase(gh<_i1028.CategoriesService>()));
     gh.factory<_i252.FetchBrandsUseCase>(
@@ -238,9 +274,17 @@ extension GetItInjectableX on _i174.GetIt {
           fetchCategoriesUseCase: gh<_i23.FetchCategoriesUseCase>(),
           fetchBrandsUseCase: gh<_i252.FetchBrandsUseCase>(),
         ));
+    gh.factory<_i46.CartBloc>(() => _i46.CartBloc(
+          gh<_i20.AddCartItemUseCase>(),
+          gh<_i29.ClearCartItemUseCase>(),
+          gh<_i398.ClearCartUseCase>(),
+          gh<_i112.GetCartUseCase>(),
+          gh<_i598.UpdateCartItemUseCase>(),
+          gh<_i647.ObserveIsAuthenticatedUseCase>(),
+        ));
     gh.factory<_i84.FetchCurrentUserUseCase>(
         () => _i84.FetchCurrentUserUseCase(gh<_i796.UserService>()));
-    gh.factory<_i390.ProfileBloc>(() => _i390.ProfileBloc(
+    gh.factory<_i928.ProfileBloc>(() => _i928.ProfileBloc(
         fetchCurrentUserUseCase: gh<_i84.FetchCurrentUserUseCase>()));
     gh.factory<_i532.LoginCubit>(
         () => _i532.LoginCubit(loginUseCase: gh<_i919.LoginUseCase>()));
