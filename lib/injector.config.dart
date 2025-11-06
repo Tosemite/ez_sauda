@@ -68,6 +68,8 @@ import 'package:ez_sauda/features/cart/domain/use_cases/clear_cart_item_use_case
     as _i29;
 import 'package:ez_sauda/features/cart/domain/use_cases/clear_cart_use_case.dart'
     as _i398;
+import 'package:ez_sauda/features/cart/domain/use_cases/create_order_use_case.dart'
+    as _i736;
 import 'package:ez_sauda/features/cart/domain/use_cases/get_cart_use_case.dart'
     as _i112;
 import 'package:ez_sauda/features/cart/domain/use_cases/update_cart_item_use_case.dart'
@@ -256,6 +258,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i20.AddCartItemUseCase(gh<_i5.CartService>()));
     gh.factory<_i29.ClearCartItemUseCase>(
         () => _i29.ClearCartItemUseCase(gh<_i5.CartService>()));
+    gh.factory<_i736.CreateOrderUseCase>(
+        () => _i736.CreateOrderUseCase(gh<_i5.CartService>()));
     gh.factory<_i23.FetchCategoriesUseCase>(
         () => _i23.FetchCategoriesUseCase(gh<_i1028.CategoriesService>()));
     gh.factory<_i252.FetchBrandsUseCase>(
@@ -281,6 +285,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i112.GetCartUseCase>(),
           gh<_i598.UpdateCartItemUseCase>(),
           gh<_i647.ObserveIsAuthenticatedUseCase>(),
+          gh<_i736.CreateOrderUseCase>(),
         ));
     gh.factory<_i84.FetchCurrentUserUseCase>(
         () => _i84.FetchCurrentUserUseCase(gh<_i796.UserService>()));

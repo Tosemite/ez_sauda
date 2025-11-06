@@ -9,6 +9,7 @@ import 'package:ez_sauda/features/cart/domain/models/cart_product.dart';
 import 'package:ez_sauda/features/cart/domain/use_cases/add_cart_item_use_case.dart';
 import 'package:ez_sauda/features/cart/domain/use_cases/clear_cart_item_use_case.dart';
 import 'package:ez_sauda/features/cart/domain/use_cases/clear_cart_use_case.dart';
+import 'package:ez_sauda/features/cart/domain/use_cases/create_order_use_case.dart';
 import 'package:ez_sauda/features/cart/domain/use_cases/get_cart_use_case.dart';
 import 'package:ez_sauda/features/cart/domain/use_cases/update_cart_item_use_case.dart';
 import 'package:ez_sauda/features/cart/presentation/blocs/cart_event.dart';
@@ -30,6 +31,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     this._getCartUseCase,
     this._updateCartItemUseCase,
     this._observeIsAuthenticatedUseCase,
+    this._createOrderUseCase,
   ) : super(CartState(productList: [])) {
     on<CartProductAmountChanged>(
       _incrementProduct,
@@ -52,6 +54,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   final GetCartUseCase _getCartUseCase;
   final UpdateCartItemUseCase _updateCartItemUseCase;
   final ObserveIsAuthenticatedUseCase _observeIsAuthenticatedUseCase;
+  final CreateOrderUseCase _createOrderUseCase;
 
   Future? _fetchFuture;
 
@@ -339,16 +342,34 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         orderCreateState: BaseInProgress(),
       ),
     );
-    await Future.delayed(Duration(milliseconds: 400));
-    emit(
-      state.copyWith(
-        orderCreateState: BaseSuccess(),
-        totalItemCount: 0,
-        totalPrice: 0,
-        productMap: {},
-        productList: [],
-        selectedDistributorIds: {},
+    final groupedProducts = state.productList.groupListsBy(
+      (e) => e.distributorId,
+    );
+    final results = await Future.wait(
+      groupedProducts.entries.map(
+        (e) => _createOrderUseCase(
+          CreateOrderParams(distributorId: e.key, products: e.value),
+        ),
       ),
     );
+    final failures = results.whereType<ErrorResult>();
+    if (failures.isNotEmpty) {
+      emit(
+        state.copyWith(
+          orderCreateState: BaseFailure(failures.first.failure),
+        ),
+      );
+    } else {
+      emit(
+        state.copyWith(
+          orderCreateState: BaseSuccess(),
+          totalItemCount: 0,
+          totalPrice: 0,
+          productMap: {},
+          productList: [],
+          selectedDistributorIds: {},
+        ),
+      );
+    }
   }
 }

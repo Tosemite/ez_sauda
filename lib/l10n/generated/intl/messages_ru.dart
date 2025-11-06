@@ -77,9 +77,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Вы уверены, что хотите выйти из аккаунта?"),
         "confirmed": MessageLookupByLibrary.simpleMessage("Подтвержден"),
         "cost": MessageLookupByLibrary.simpleMessage("Цена"),
-        "currentOrders": MessageLookupByLibrary.simpleMessage("Текущие заказы"),
-        "currentOrdersDescription":
-            MessageLookupByLibrary.simpleMessage("Проверьте статус заказа"),
         "customerSupport":
             MessageLookupByLibrary.simpleMessage("Техподдержка EasySauda"),
         "customerSupportDescription": MessageLookupByLibrary.simpleMessage(
@@ -126,7 +123,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "myOrders": MessageLookupByLibrary.simpleMessage("Мои заказы"),
         "numItems": m8,
         "ofReviewsCount": m9,
-        "orderHistory": MessageLookupByLibrary.simpleMessage("История заказов"),
         "orderHistoryDescription": MessageLookupByLibrary.simpleMessage(
             "Тут Вы можете повторить, сделать возврат, обменять, отменить заказ"),
         "orderNumber": m10,

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ez_sauda/features/cart/data/dtos/create_order_request.dart';
 import 'package:ez_sauda/features/cart/data/dtos/get_cart_products_response.dart';
 import 'package:ez_sauda/features/cart/data/dtos/save_cart_product_request.dart';
 import 'package:injectable/injectable.dart';
@@ -29,4 +30,7 @@ abstract class CartSource {
     @Path() String productId,
     @Path() String distributorId,
   );
+
+  @POST('/orders')
+  Future<void> createOrder(@Body() CreateOrderRequest body);
 }

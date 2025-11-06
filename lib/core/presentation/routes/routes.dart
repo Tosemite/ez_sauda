@@ -9,7 +9,6 @@ import 'package:ez_sauda/features/cart/presentation/screens/cart_order_success_s
 import 'package:ez_sauda/features/cart/presentation/screens/cart_screen.dart';
 import 'package:ez_sauda/features/cart/presentation/screens/cart_wrapper_screen.dart';
 import 'package:ez_sauda/features/catalog/presentation/screens/catalog_screen.dart';
-import 'package:ez_sauda/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:ez_sauda/features/home/presentation/screens/home_screen.dart';
 import 'package:ez_sauda/features/orders/domain/models/product_order.dart';
 import 'package:ez_sauda/features/orders/presentation/screens/order_info_screen.dart';
@@ -59,10 +58,6 @@ class AppRouter extends RootStackRouter {
                       path: 'confirm',
                     ),
                   ],
-                ),
-                AutoRoute(
-                  page: FavoritesRoute.page,
-                  path: 'favorites',
                 ),
                 AutoRoute(
                   page: ProfileRoute.page,

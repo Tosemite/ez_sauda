@@ -33,8 +33,6 @@ class AppTopBar extends StatelessWidget {
                     'Рус',
                     style: context.typography.headline5Regular,
                   ),
-                  const SizedBox(width: 16),
-                  context.icons.bell.svg(),
                 ],
               ),
             ),

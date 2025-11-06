@@ -50,14 +50,14 @@ class ProfileScreen extends StatelessWidget {
                                   '${user.lastName} ${user.firstName}',
                                   style: context.typography.headline5Regular,
                                 ),
-                                Text(
-                                  user.organization.name,
-                                  style: context.typography.headline5Regular
-                                      .copyWith(
-                                    color:
-                                        context.colors.secondary.withAlpha(115),
-                                  ),
-                                ),
+                                // Text(
+                                //   user.organization.name,
+                                //   style: context.typography.headline5Regular
+                                //       .copyWith(
+                                //     color:
+                                //         context.colors.secondary.withAlpha(115),
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),
@@ -74,18 +74,13 @@ class ProfileScreen extends StatelessWidget {
             child: Divider(),
           ),
           ProfileActionTile(
-            title: context.l10n.orderHistory,
+            title: context.l10n.myOrders,
             subtitle: context.l10n.orderHistoryDescription,
             onTap: () => context.router.navigate(OrderListRoute()),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Divider(),
-          ),
-          ProfileActionTile(
-            title: context.l10n.currentOrders,
-            subtitle: context.l10n.currentOrdersDescription,
-            onTap: () {},
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -94,15 +89,6 @@ class ProfileScreen extends StatelessWidget {
           ProfileActionTile(
             title: context.l10n.supplierList,
             subtitle: context.l10n.supplierListDescription,
-            onTap: () {},
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Divider(),
-          ),
-          ProfileActionTile(
-            title: context.l10n.yourReviews,
-            subtitle: context.l10n.yourReviewsDescription,
             onTap: () {},
           ),
           Padding(
@@ -123,22 +109,6 @@ class ProfileScreen extends StatelessWidget {
             title: context.l10n.customerSupport,
             subtitle: context.l10n.customerSupportDescription,
             inverse: true,
-            onTap: () {},
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Divider(),
-          ),
-          ProfileActionTile(
-            title: context.l10n.returnAndExchangeConditions,
-            onTap: () {},
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Divider(),
-          ),
-          ProfileActionTile(
-            title: context.l10n.complaints,
             onTap: () {},
           ),
           Padding(

@@ -5,9 +5,12 @@ import 'package:ez_sauda/core/config/locale_config.dart';
 import 'package:ez_sauda/core/data/mappers/dio_exception_mapper_x.dart';
 import 'package:ez_sauda/core/domain/models/failure.dart';
 import 'package:ez_sauda/core/domain/models/result.dart';
+import 'package:ez_sauda/features/cart/data/dtos/create_order_request.dart';
+import 'package:ez_sauda/features/cart/data/dtos/create_order_request_items.dart';
 import 'package:ez_sauda/features/cart/data/dtos/save_cart_product_request.dart';
 import 'package:ez_sauda/features/cart/data/sources/cart_source.dart';
 import 'package:ez_sauda/features/cart/domain/models/cart.dart';
+import 'package:ez_sauda/features/cart/domain/models/cart_product.dart';
 import 'package:ez_sauda/features/cart/domain/services/cart_service.dart';
 import 'package:injectable/injectable.dart';
 
@@ -103,6 +106,38 @@ class CartServiceImpl implements CartService {
             productId,
             distributorId,
             quantity,
+          ),
+        ),
+      );
+    } on DioException catch (e) {
+      return ErrorResult(e.toFailure(localeConfig.locale.wrongLoginOrPassword));
+    } on Exception catch (e) {
+      return ErrorResult(OtherFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Result<void>> createOrder(
+    String distributorId,
+    List<CartProduct> products,
+  ) async {
+    try {
+      return SuccessResult(
+        await cartSource.createOrder(
+          CreateOrderRequest(
+            distributorId: distributorId,
+            items: products
+                .map(
+                  (e) => CreateOrderRequestItems(
+                    productId: e.productId,
+                    quantity: e.quantity,
+                    unitPrice: e.unitPrice,
+                    totalPrice: e.totalPrice,
+                  ),
+                )
+                .toList(),
+            deliveryDate: DateTime.now().toUtc(),
+            createdAt: DateTime.now().toUtc(),
           ),
         ),
       );

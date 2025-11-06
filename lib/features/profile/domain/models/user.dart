@@ -1,4 +1,4 @@
-import 'package:ez_sauda/features/profile/domain/models/organization.dart';
+
 
 class User {
   final String id;
@@ -6,7 +6,7 @@ class User {
   final String phoneNumber;
   final String firstName;
   final String lastName;
-  final Organization organization;
+  // final Organization organization;
   final String imageUrl;
 
   const User({
@@ -15,7 +15,7 @@ class User {
     required this.phoneNumber,
     required this.firstName,
     required this.lastName,
-    required this.organization,
+    // required this.organization,
     required this.imageUrl,
   });
 }

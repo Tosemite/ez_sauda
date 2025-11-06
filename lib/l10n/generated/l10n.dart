@@ -480,26 +480,6 @@ class Localization {
     );
   }
 
-  /// `История заказов`
-  String get orderHistory {
-    return Intl.message(
-      'История заказов',
-      name: 'orderHistory',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Текущие заказы`
-  String get currentOrders {
-    return Intl.message(
-      'Текущие заказы',
-      name: 'currentOrders',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Список поставщиков`
   String get supplierList {
     return Intl.message(
@@ -565,16 +545,6 @@ class Localization {
     return Intl.message(
       'Тут Вы можете повторить, сделать возврат, обменять, отменить заказ',
       name: 'orderHistoryDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Проверьте статус заказа`
-  String get currentOrdersDescription {
-    return Intl.message(
-      'Проверьте статус заказа',
-      name: 'currentOrdersDescription',
       desc: '',
       args: [],
     );

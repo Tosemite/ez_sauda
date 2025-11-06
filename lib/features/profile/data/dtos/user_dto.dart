@@ -1,4 +1,3 @@
-import 'package:ez_sauda/features/profile/data/dtos/organization_dto.dart';
 import 'package:ez_sauda/features/profile/domain/models/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -16,8 +15,8 @@ class UserDto implements User {
   final String firstName;
   @override
   final String lastName;
-  @override
-  final OrganizationDto organization;
+  // @override
+  // final OrganizationDto organization;
 
   UserDto({
     required this.id,
@@ -25,7 +24,7 @@ class UserDto implements User {
     required this.phoneNumber,
     required this.firstName,
     required this.lastName,
-    required this.organization,
+    // required this.organization,
   });
 
   factory UserDto.fromJson(Map<String, dynamic> json) =>

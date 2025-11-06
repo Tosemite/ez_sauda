@@ -15,7 +15,6 @@ class AppScreen extends StatelessWidget {
         HomeRoute(),
         CatalogRoute(),
         CartRoute(),
-        FavoritesRoute(),
         ProfileRoute(),
       ],
       builder: (context, child) {

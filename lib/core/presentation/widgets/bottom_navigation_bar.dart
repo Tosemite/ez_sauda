@@ -108,12 +108,6 @@ class BottomNavBar extends StatelessWidget {
                   _buildNavBarItem(
                     context,
                     tabsRouter.activeIndex == 3,
-                    context.icons.heart.path,
-                    context.l10n.favorite,
-                  ),
-                  _buildNavBarItem(
-                    context,
-                    tabsRouter.activeIndex == 4,
                     context.icons.user.path,
                     context.l10n.profile,
                   ),
